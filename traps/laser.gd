@@ -1,6 +1,8 @@
 extends Area2D
 
 var active = false
+var damage = 1
+var knockback_strength = 1
 
 @export_category("refs")
 @export var timer:Timer
@@ -10,7 +12,7 @@ var active = false
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func destruct():
@@ -18,7 +20,7 @@ func destruct():
 
 func _on_body_entered(body):
 	if body.is_in_group("Player") or body.is_in_group("Minion"):
-		body.hit.emit(1)
+		body.hit.emit(damage,knockback_strength)
 
 func activate():
 	active = true
@@ -27,7 +29,7 @@ func activate():
 	
 	for obj in get_overlapping_bodies():
 		if obj.is_in_group("Player") or obj.is_in_group("Minion"):
-			obj.hit.emit(1)
+			obj.hit.emit(damage,knockback_strength)
 
 func _on_timer_timeout():
 	if active:

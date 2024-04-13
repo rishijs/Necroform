@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 var max_health = 2
 var health = 2
+var damage = 0
 var speed = 150.0
 var jump_vel = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,7 +14,7 @@ var rooted = false
 enum dirs {LEFT,RIGHT}
 var dir = dirs.RIGHT
 
-signal hit(damage)
+signal hit(damage,knockback)
 
 enum minions {SKELETON,DARKSTAR}
 var awakened = false
@@ -64,6 +65,7 @@ func spawn_minion(type,n):
 
 func spawn_skeleton():
 	var skeleton = skeletons.instantiate()
+	skeleton.dir = dir
 	
 	if dir == dirs.LEFT:
 		skeleton.speed *= -1
@@ -75,6 +77,7 @@ func spawn_skeleton():
 
 func spawn_darkstar():
 	var darkstar = darkstars.instantiate()
+	darkstar.dir = dir
 	
 	if dir == dirs.LEFT:
 		darkstar.speed *= -1
@@ -101,7 +104,15 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_hit(damage):
+func _on_hit(damage,knockback):
 	health -= damage
+	apply_knockback(knockback)
+	screenshake()
 	if health <= 0:
 		get_tree().reload_current_scene()
+
+func apply_knockback(strength):
+	pass
+
+func screenshake():
+	pass

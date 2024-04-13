@@ -11,7 +11,8 @@ gradient = SubResource("Gradient_qmc7v")
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wrrq"]
 radius = 88.8144
 
-[node name="Necromine" type="Area2D"]
+[node name="Necromine" type="Area2D" groups=["Mine"]]
+visible = false
 collision_mask = 7
 script = ExtResource("1_evbed")
 
@@ -31,6 +32,7 @@ color = Color(0.678431, 0, 0, 1)
 polygon = PackedVector2Array(-148, -1, -105, -102, 1, -149, 107, -100, 145, -3, 102, 107, -2, 151, -115, 103)
 
 [node name="debug2" type="Polygon2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.14902)
 scale = Vector2(1.2, 1.2)
 color = Color(0.164706, 0, 0, 1)

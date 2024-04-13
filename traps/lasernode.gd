@@ -24,7 +24,7 @@ func fire_laser():
 	laser.global_position = global_position
 	laser.global_rotation = angle
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_timer_timeout():

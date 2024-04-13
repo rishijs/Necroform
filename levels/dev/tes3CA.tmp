@@ -62,18 +62,15 @@ layer_0/tile_data = PackedInt32Array(196608, 0, 65536, 196609, 0, 65536, 196610,
 
 [node name="Lasernode" parent="LaserManager" instance=ExtResource("5_prvqu")]
 position = Vector2(733, 265)
-frequency = 30.0
 start_delay = 0.0
 
 [node name="Lasernode2" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
 position = Vector2(884, 265)
-frequency = 30.0
 start_delay = 0.25
 laser_point = NodePath("../Lasernode/laser_point")
 
 [node name="Lasernode3" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
 position = Vector2(1027, 265)
-frequency = 30.0
 laser_point = NodePath("../Lasernode/laser_point")
 
 [node name="Objects" type="Node2D" parent="." groups=["Objects"]]
@@ -159,17 +156,15 @@ position = Vector2(617, 239)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PL" type="Marker2D" parent="Enemies"]
-position = Vector2(841, 219)
-
-[node name="PR" type="Marker2D" parent="Enemies"]
-position = Vector2(1289, 228)
-
 [node name="Enemy" parent="Enemies" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_u27tn")]
 position = Vector2(1224, 227)
 patrol_range = NodePath("../PatrolArea")
-patrol_left = NodePath("../PL")
-patrol_right = NodePath("../PR")
+patrol_left = NodePath("PL")
+patrol_right = NodePath("PR")
+
+[node name="PL" type="Marker2D" parent="Enemies/Enemy"]
+
+[node name="PR" type="Marker2D" parent="Enemies/Enemy"]
 
 [node name="PatrolArea" parent="Enemies" instance=ExtResource("8_vygl6")]
 
@@ -179,9 +174,9 @@ position = Vector2(-457, 211)
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506389" to="Traps/@Area2D@506389" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506390" to="Traps/@Area2D@506390" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506391" to="Traps/@Area2D@506391" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@449268" to="Traps/@Area2D@449268" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@449269" to="Traps/@Area2D@449269" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@449270" to="Traps/@Area2D@449270" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506392" to="Traps/@Area2D@506392" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506393" to="Traps/@Area2D@506393" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@449271" to="Traps/@Area2D@449271" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@449272" to="Traps/@Area2D@449272" method="_on_body_entered"]

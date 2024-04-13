@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm37113yoafs"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_g2l3m"]
+
+[sub_resource type="Gradient" id="Gradient_qbu24"]
+colors = PackedColorArray(1, 0, 0, 1, 0.52549, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gvlas"]
+gradient = SubResource("Gradient_qbu24")
+fill_from = Vector2(0.559633, 1)
+fill_to = Vector2(0.555046, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwkjy"]
+size = Vector2(63, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3o2"]
+size = Vector2(159, 41)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_g2l3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_gvlas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_lwkjy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 10.5)
+shape = SubResource("RectangleShape2D_di3o2")
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
