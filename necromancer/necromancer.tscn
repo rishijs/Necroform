@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dax3f1xqn4kxh"]
+
+[ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_erpu1"]
+
+[sub_resource type="Gradient" id="Gradient_nxwie"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6rjlu"]
+gradient = SubResource("Gradient_nxwie")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
+size = Vector2(64, 64)
+
+[node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("spawn_l", "spawn_r")]
+collision_layer = 2
+script = ExtResource("1_erpu1")
+spawn_l = NodePath("SpawnL")
+spawn_r = NodePath("SpawnR")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_6rjlu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ixjji")
+
+[node name="SpawnL" type="Marker2D" parent="."]
+position = Vector2(-52, 25)
+
+[node name="SpawnR" type="Marker2D" parent="."]
+position = Vector2(54, 25)

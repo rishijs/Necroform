@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch5r2jqftlkcq"]
+
+[ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_m1b6k"]
+
+[sub_resource type="Gradient" id="Gradient_f35mi"]
+colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.584314, 0.141176, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yc331"]
+gradient = SubResource("Gradient_f35mi")
+fill_from = Vector2(1, 0.940367)
+
+[sub_resource type="Gradient" id="Gradient_o6iaf"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4586u"]
+gradient = SubResource("Gradient_o6iaf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xqbw"]
+size = Vector2(64.0243, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyal4"]
+size = Vector2(3.37389, 651)
+
+[sub_resource type="Gradient" id="Gradient_nxwie"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6rjlu"]
+gradient = SubResource("Gradient_nxwie")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
+size = Vector2(64, 64)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0.999939, 1.5)
+scale = Vector2(18, 10.1719)
+texture = SubResource("GradientTexture2D_yc331")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, 292)
+scale = Vector2(18.08, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-30.1991, -292)
+scale = Vector2(0.0530972, 10.24)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.0121689, 0.5)
+shape = SubResource("RectangleShape2D_6xqbw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-0.0796461, -584)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.091815, -583.5)
+shape = SubResource("RectangleShape2D_6xqbw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-30.1715, -292.5)
+shape = SubResource("RectangleShape2D_qyal4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(30.2943, -289.32)
+scale = Vector2(0.0530972, 10.24)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(30.3219, -289.82)
+shape = SubResource("RectangleShape2D_qyal4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Necromancer" type="CharacterBody2D" parent="."]
+position = Vector2(-458, 208)
+script = ExtResource("1_m1b6k")
+
+[node name="Player" type="Sprite2D" parent="Necromancer"]
+texture = SubResource("GradientTexture2D_6rjlu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Necromancer"]
+shape = SubResource("RectangleShape2D_ixjji")
+
+[node name="Interface" type="CanvasLayer" parent="."]
