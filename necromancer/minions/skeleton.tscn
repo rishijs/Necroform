@@ -11,7 +11,7 @@ colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0.47788, 0.47788, 0.4778
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_84bas"]
 gradient = SubResource("Gradient_1ulky")
 
-[node name="Skeleton" type="CharacterBody2D" groups=["Skeleton"]]
+[node name="Skeleton" type="CharacterBody2D" groups=["Minion", "Skeleton"]]
 collision_layer = 36
 collision_mask = 9
 script = ExtResource("1_v5tk1")

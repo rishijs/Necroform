@@ -18,5 +18,5 @@ func _on_body_entered(body):
 		body.hit.emit(damage)
 	if body.is_in_group("Skeleton"):
 		set_collision_mask_value(Globals.col_names.PLAYER,false)
-		set_collision_mask_value(Globals.col_names.MINION,false)
+		set_collision_mask_value(Globals.col_names.SKELETON,false)
 		body.mount.emit(mount_loc.global_position)

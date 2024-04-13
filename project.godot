@@ -51,10 +51,11 @@ summon2={
 
 2d_physics/layer_1="default"
 2d_physics/layer_2="player"
-2d_physics/layer_3="minion"
+2d_physics/layer_3="skeleton"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="trap"
 2d_physics/layer_6="decay"
+2d_physics/layer_7="darkstar"
 
 [rendering]
 

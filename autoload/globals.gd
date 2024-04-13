@@ -1,6 +1,6 @@
 extends Node
 
-enum col_names {NONE,DEFAULT,PLAYER,MINION,ENEMY,TRAP,DECAY}
+enum col_names {NONE,DEFAULT,PLAYER,SKELETON,ENEMY,TRAP,DECAY,DARKSTAR}
 
 func _ready():
 	pass

@@ -31,4 +31,7 @@ position = Vector2(-52, 25)
 [node name="SpawnR" type="Marker2D" parent="."]
 position = Vector2(54, 25)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="hit" from="." to="." method="_on_hit"]

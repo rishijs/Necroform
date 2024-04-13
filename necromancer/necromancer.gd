@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var obj_pool = get_tree().get_first_node_in_group("Objects")
+@onready var room_manager_ref = get_tree().get_first_node_in_group("RoomManager")
 
 var max_health = 2
 var health = 2
@@ -16,29 +17,39 @@ signal hit(damage)
 
 enum minions {SKELETON,DARKSTAR}
 var awakened = false
+var can_spawn = true
+var spawn_cooldown = 1
 var skeletons = preload("res://necromancer/minions/skeleton.tscn")
 var darkstars = preload("res://necromancer/minions/darkstar.tscn")
+
+var room = 1
 
 @export_category("ref")
 @export var sprite:Sprite2D
 @export var spawn_l:Marker2D
 @export var spawn_r:Marker2D
+@export var summon_timer:Timer
 
+func _ready():
+	global_position = room_manager_ref.get_child(room).spawn.global_position
 
 func _input(_event):
-	if Input.is_action_just_pressed("summon1"):
-		spawn_minion(minions.SKELETON,3)
-	if Input.is_action_just_pressed("summon2"):
-		spawn_minion(minions.DARKSTAR,1)
-	if Input.is_action_just_pressed("left") and not rooted:
-		dir = dirs.LEFT
-		sprite.flip_h = true
-	if Input.is_action_just_pressed("right") and not rooted:
-		dir = dirs.RIGHT
-		sprite.flip_h = false
+	if not rooted:
+		if can_spawn:
+			if Input.is_action_just_pressed("summon1"):
+				spawn_minion(minions.SKELETON,3)
+			if Input.is_action_just_pressed("summon2"):
+				spawn_minion(minions.DARKSTAR,1)
+		if Input.is_action_just_pressed("left"):
+			dir = dirs.LEFT
+			sprite.flip_h = true
+		if Input.is_action_just_pressed("right"):
+			dir = dirs.RIGHT
+			sprite.flip_h = false
 
 func spawn_minion(type,n):
 	rooted = true
+	can_spawn = false
 	for i in range(n):
 		match type:
 			minions.SKELETON:
@@ -48,6 +59,8 @@ func spawn_minion(type,n):
 				await get_tree().create_timer(0.25,false).timeout
 				spawn_darkstar()
 	rooted = false
+	await get_tree().create_timer(spawn_cooldown,false).timeout
+	can_spawn = true
 
 func spawn_skeleton():
 	var skeleton = skeletons.instantiate()

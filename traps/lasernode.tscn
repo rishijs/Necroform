@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv6ylubngu6vt"]
+
+[ext_resource type="Script" path="res://traps/lasernode.gd" id="1_y3thm"]
+
+[sub_resource type="Gradient" id="Gradient_62t0j"]
+colors = PackedColorArray(0.737255, 0, 0, 1, 1, 0.172549, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aelog"]
+gradient = SubResource("Gradient_62t0j")
+fill_from = Vector2(0.788991, 1)
+
+[node name="Lasernode" type="Node2D" node_paths=PackedStringArray("laser_point", "timer")]
+script = ExtResource("1_y3thm")
+laser_point = NodePath("laser_point")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 0.5)
+scale = Vector2(1, 0.421875)
+texture = SubResource("GradientTexture2D_aelog")
+
+[node name="laser_point" type="Marker2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

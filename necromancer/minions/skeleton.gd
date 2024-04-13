@@ -29,7 +29,7 @@ func _on_mount(loc):
 	global_position = loc
 	scale *= 1.5
 	set_collision_mask_value(Globals.col_names.DECAY,true)
-	set_collision_mask_value(Globals.col_names.MINION,false)
+	set_collision_mask_value(Globals.col_names.SKELETON,false)
 	set_collision_mask_value(Globals.col_names.ENEMY,false)
 
 
