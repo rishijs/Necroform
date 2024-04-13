@@ -11,8 +11,9 @@ gradient = SubResource("Gradient_nxwie")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
 size = Vector2(64, 64)
 
-[node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("spawn_l", "spawn_r")]
+[node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("spawn_l", "spawn_r") groups=["Player"]]
 collision_layer = 2
+collision_mask = 39
 script = ExtResource("1_erpu1")
 spawn_l = NodePath("SpawnL")
 spawn_r = NodePath("SpawnR")
@@ -28,3 +29,5 @@ position = Vector2(-52, 25)
 
 [node name="SpawnR" type="Marker2D" parent="."]
 position = Vector2(54, 25)
+
+[connection signal="hit" from="." to="." method="_on_hit"]

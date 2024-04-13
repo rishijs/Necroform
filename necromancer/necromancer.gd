@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+var max_health = 1
+var health = 1
 var speed = 150.0
 var jump_vel = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -8,6 +9,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var rooted = false
 enum dirs {LEFT,RIGHT}
 var dir = dirs.RIGHT
+
+signal hit(damage)
 
 var skeletons = preload("res://necromancer/minions/skeleton.tscn")
 
@@ -17,7 +20,7 @@ var skeletons = preload("res://necromancer/minions/skeleton.tscn")
 @export var objects_pool:Node
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("summon"):
 		spawn_minion(3)
 	if Input.is_action_just_pressed("left"):
@@ -58,3 +61,9 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+
+
+func _on_hit(damage):
+	health -= damage
+	if health <= 0:
+		get_tree().reload_current_scene()

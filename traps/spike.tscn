@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc24dccmm07p7"]
+
+[ext_resource type="Script" path="res://traps/spike.gd" id="1_wduor"]
+
+[sub_resource type="Gradient" id="Gradient_4rrvs"]
+colors = PackedColorArray(0.52549, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6pep"]
+gradient = SubResource("Gradient_4rrvs")
+
+[node name="Spike" type="Area2D" node_paths=PackedStringArray("mount_loc")]
+collision_layer = 17
+collision_mask = 7
+script = ExtResource("1_wduor")
+mount_loc = NodePath("Mount")
+
+[node name="Mount" type="Marker2D" parent="."]
+position = Vector2(0, -43)
+
+[node name="CollisionPoly2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(0, -21, -10, 10, 9, 10)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_a6pep")
+polygon = PackedVector2Array(-10, 10, 0, -20, 9, 10)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

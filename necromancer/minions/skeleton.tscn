@@ -11,8 +11,8 @@ colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0.47788, 0.47788, 0.4778
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_84bas"]
 gradient = SubResource("Gradient_1ulky")
 
-[node name="Skeleton" type="CharacterBody2D"]
-collision_layer = 4
+[node name="Skeleton" type="CharacterBody2D" groups=["Skeleton"]]
+collision_layer = 36
 collision_mask = 9
 script = ExtResource("1_v5tk1")
 
@@ -26,8 +26,9 @@ texture = SubResource("GradientTexture2D_84bas")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
+[connection signal="mount" from="." to="." method="_on_mount"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
