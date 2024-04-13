@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 
 var speed = 200.0
+var health = 1
 var mounted = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 signal mount(loc)
+signal hit(damage)
 
 func _ready():
 	pass
@@ -29,3 +31,9 @@ func _on_mount(loc):
 	set_collision_mask_value(Globals.col_names.DECAY,true)
 	set_collision_mask_value(Globals.col_names.MINION,false)
 	set_collision_mask_value(Globals.col_names.ENEMY,false)
+
+
+func _on_hit(damage):
+	health -= damage
+	if health <= 0:
+		queue_free()

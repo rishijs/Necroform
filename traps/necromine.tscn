@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhhv8ppl28fcy"]
+
+[ext_resource type="Script" path="res://traps/necromine.gd" id="1_evbed"]
+
+[sub_resource type="Gradient" id="Gradient_qmc7v"]
+colors = PackedColorArray(0.588235, 0, 0.12549, 1, 1, 0.141176, 0.0470588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4vyg"]
+gradient = SubResource("Gradient_qmc7v")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wrrq"]
+radius = 88.8144
+
+[node name="Necromine" type="Area2D"]
+collision_mask = 7
+script = ExtResource("1_evbed")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("GradientTexture2D_y4vyg")
+
+[node name="trigger" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4wrrq")
+
+[node name="debug" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+z_index = 1
+scale = Vector2(0.6, 0.6)
+color = Color(0.678431, 0, 0, 1)
+polygon = PackedVector2Array(-148, -1, -105, -102, 1, -149, 107, -100, 145, -3, 102, 107, -2, 151, -115, 103)
+
+[node name="debug2" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+scale = Vector2(1.2, 1.2)
+color = Color(0.164706, 0, 0, 1)
+polygon = PackedVector2Array(-148, -1, -105, -102, 1, -149, 107, -100, 145, -3, 102, 107, -2, 151, -115, 103)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

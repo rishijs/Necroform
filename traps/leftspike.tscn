@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc24dccmm07p7"]
+[gd_scene load_steps=4 format=3 uid="uid://rq7ix38g1h57"]
 
-[ext_resource type="Script" path="res://traps/spike.gd" id="1_wduor"]
+[ext_resource type="Script" path="res://traps/spike.gd" id="1_1gyfg"]
 
 [sub_resource type="Gradient" id="Gradient_4rrvs"]
 colors = PackedColorArray(0.52549, 0, 0, 1, 1, 0, 0, 1)
@@ -9,21 +9,22 @@ colors = PackedColorArray(0.52549, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_4rrvs")
 
 [node name="Spike" type="Area2D" node_paths=PackedStringArray("mount_loc")]
+rotation = -1.5708
 collision_layer = 17
 collision_mask = 7
-script = ExtResource("1_wduor")
+script = ExtResource("1_1gyfg")
 mount_loc = NodePath("Mount")
 
 [node name="Mount" type="Marker2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(1.79217e-06, -41)
 
 [node name="CollisionPoly2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0.400002, 14.6)
+position = Vector2(0.599997, -19.4)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(0, -21, -10, 10, 9, 10)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(0.400002, 14.6)
+position = Vector2(0.599997, -19.4)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_a6pep")
 polygon = PackedVector2Array(-10, 10, 0, -20, 9, 10)

@@ -25,10 +25,10 @@ scale = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_84bas")
 
 [node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
 autostart = true
 
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="mount" from="." to="." method="_on_mount"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

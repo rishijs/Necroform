@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxwh5063baalu"]
+
+[ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_4nfsi"]
+[ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_ijeud"]
+[ext_resource type="PackedScene" uid="uid://dax3f1xqn4kxh" path="res://necromancer/necromancer.tscn" id="2_xqkux"]
+[ext_resource type="PackedScene" uid="uid://rq7ix38g1h57" path="res://traps/leftspike.tscn" id="3_o2rbf"]
+[ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_ymddp"]
+[ext_resource type="PackedScene" uid="uid://crrb2u2b2ji88" path="res://camera_system/room_switch.tscn" id="6_eb01g"]
+
+[sub_resource type="Gradient" id="Gradient_f35mi"]
+colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.584314, 0.141176, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yc331"]
+gradient = SubResource("Gradient_f35mi")
+fill_from = Vector2(1, 0.940367)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_643ka"]
+scenes/1/scene = ExtResource("1_4nfsi")
+scenes/3/scene = ExtResource("2_ijeud")
+scenes/4/scene = ExtResource("3_o2rbf")
+scenes/5/scene = ExtResource("4_ymddp")
+
+[sub_resource type="TileSet" id="TileSet_gw5c3"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_643ka")
+
+[sub_resource type="Gradient" id="Gradient_o6iaf"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4586u"]
+gradient = SubResource("Gradient_o6iaf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xqbw"]
+size = Vector2(44.2478, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28dta"]
+size = Vector2(52.0221, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wauoq"]
+size = Vector2(106.606, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyal4"]
+size = Vector2(3.37389, 651)
+
+[node name="Testing" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(416.5, 1.5)
+scale = Vector2(30.9844, 10.1719)
+texture = SubResource("GradientTexture2D_yc331")
+
+[node name="Traps" type="TileMap" parent="."]
+position = Vector2(-2, 2)
+tile_set = SubResource("TileSet_gw5c3")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 0, 65536, 196609, 0, 65536, 196610, 0, 65536, 262143, 0, 65536, 262142, 0, 196608, 262151, 0, 262144, 262147, 0, 327680)
+
+[node name="Objects" type="Node" parent="." groups=["Objects"]]
+
+[node name="TempBounds" type="StaticBody2D" parent="."]
+position = Vector2(-1, 292)
+scale = Vector2(18.08, 1)
+collision_layer = 31
+
+[node name="Sprite2D" type="Sprite2D" parent="TempBounds"]
+z_index = 1
+position = Vector2(-9.88827, 0)
+scale = Vector2(0.690991, 1)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TempBounds"]
+z_index = 1
+position = Vector2(-30.1991, -292)
+scale = Vector2(0.0530972, 10.24)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempBounds"]
+position = Vector2(-9.90043, 0.5)
+shape = SubResource("RectangleShape2D_6xqbw")
+
+[node name="Sprite2D5" type="Sprite2D" parent="TempBounds"]
+z_index = 1
+position = Vector2(51.8131, -1)
+scale = Vector2(0.811981, 1)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TempBounds"]
+position = Vector2(51.7854, -0.5)
+shape = SubResource("RectangleShape2D_28dta")
+
+[node name="Sprite2D4" type="Sprite2D" parent="TempBounds"]
+z_index = 1
+position = Vector2(21.4602, -584)
+scale = Vector2(1.67312, 1)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TempBounds"]
+position = Vector2(21.1991, -583.5)
+shape = SubResource("RectangleShape2D_wauoq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TempBounds"]
+position = Vector2(-30.1715, -292.5)
+shape = SubResource("RectangleShape2D_qyal4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TempBounds"]
+z_index = 1
+position = Vector2(76.2566, -302.32)
+scale = Vector2(0.0530972, 10.24)
+texture = SubResource("GradientTexture2D_4586u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TempBounds"]
+position = Vector2(76.2842, -302.82)
+shape = SubResource("RectangleShape2D_qyal4")
+
+[node name="CameraManager" type="Node2D" parent="." groups=["CameraManager"]]
+
+[node name="Camera2D" type="Camera2D" parent="CameraManager"]
+
+[node name="Camera2D2" type="Camera2D" parent="CameraManager"]
+position = Vector2(834, 0)
+
+[node name="Necromancer" parent="." instance=ExtResource("2_xqkux")]
+position = Vector2(-457, 211)
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="RoomSwitch" parent="." instance=ExtResource("6_eb01g")]
+position = Vector2(508, 5)
+
+[node name="RoomSwitch2" parent="." instance=ExtResource("6_eb01g")]
+position = Vector2(592, 5)
+room_number = 1
+
+[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@246040" to="Traps/@Area2D@246040" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@246041" to="Traps/@Area2D@246041" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@246042" to="Traps/@Area2D@246042" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@246043" to="Traps/@Area2D@246043" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@246044" to="Traps/@Area2D@246044" method="_on_body_entered"]
