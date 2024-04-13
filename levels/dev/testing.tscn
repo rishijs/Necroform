@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxwh5063baalu"]
+[gd_scene load_steps=21 format=3 uid="uid://bxwh5063baalu"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_4nfsi"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_ijeud"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crrb2u2b2ji88" path="res://camera_system/room_switch.tscn" id="6_eb01g"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_u27tn"]
 [ext_resource type="PackedScene" uid="uid://cv8iu7uqsfmo5" path="res://enemies/patrol_area.tscn" id="8_vygl6"]
+[ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="10_c8kjs"]
 
 [sub_resource type="Gradient" id="Gradient_f35mi"]
 colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.584314, 0.141176, 1, 1)
@@ -56,23 +57,23 @@ texture = SubResource("GradientTexture2D_yc331")
 position = Vector2(-2, 2)
 tile_set = SubResource("TileSet_gw5c3")
 format = 2
-layer_0/tile_data = PackedInt32Array(196608, 0, 65536, 196609, 0, 65536, 196610, 0, 65536, 262143, 0, 65536, 262142, 0, 196608, 262151, 0, 262144, 262147, 0, 327680)
+layer_0/tile_data = PackedInt32Array(262142, 0, 196608, 262151, 0, 262144, 262147, 0, 327680, 196610, 0, 65536, 196609, 0, 65536)
 
 [node name="LaserManager" type="Node2D" parent="." groups=["LaserManager"]]
 
 [node name="Lasernode" parent="LaserManager" instance=ExtResource("5_prvqu")]
-position = Vector2(733, 265)
+position = Vector2(739, 287)
 frequency = 30.0
 start_delay = 0.0
 
 [node name="Lasernode2" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
-position = Vector2(884, 265)
+position = Vector2(890, 287)
 frequency = 30.0
 start_delay = 0.25
 laser_point = NodePath("../Lasernode/laser_point")
 
 [node name="Lasernode3" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
-position = Vector2(1027, 265)
+position = Vector2(1033, 287)
 frequency = 30.0
 laser_point = NodePath("../Lasernode/laser_point")
 
@@ -178,10 +179,23 @@ position = Vector2(-457, 211)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
-[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506389" to="Traps/@Area2D@506389" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506390" to="Traps/@Area2D@506390" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506391" to="Traps/@Area2D@506391" method="_on_body_entered"]
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform_default1" type="Node2D" parent="Platforms"]
+
+[node name="top" type="Marker2D" parent="Platforms/Platform_default1"]
+position = Vector2(-165, 52)
+
+[node name="bottom" type="Marker2D" parent="Platforms/Platform_default1"]
+position = Vector2(-165, 244)
+
+[node name="Platform" parent="Platforms/Platform_default1" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("10_c8kjs")]
+position = Vector2(-165, 244)
+bottom = NodePath("../bottom")
+top = NodePath("../top")
+
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506392" to="Traps/@Area2D@506392" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@506393" to="Traps/@Area2D@506393" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@560077" to="Traps/@Area2D@560077" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@560078" to="Traps/@Area2D@560078" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@560079" to="Traps/@Area2D@560079" method="_on_body_entered"]
