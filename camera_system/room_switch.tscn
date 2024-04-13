@@ -5,16 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2csxt"]
 size = Vector2(6, 520.5)
 
-[node name="RoomSwitch" type="Area2D" node_paths=PackedStringArray("spawn")]
+[node name="RoomSwitch" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_xsu00")
-spawn = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_2csxt")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 222)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

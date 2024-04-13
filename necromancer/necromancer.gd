@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var obj_pool = get_tree().get_first_node_in_group("Objects")
-@onready var room_manager_ref = get_tree().get_first_node_in_group("RoomManager")
+@onready var room_origins_ref = get_tree().get_first_node_in_group("RoomOrigins")
 
 var max_health = 2
 var health = 2
@@ -22,7 +22,7 @@ var spawn_cooldown = 1
 var skeletons = preload("res://necromancer/minions/skeleton.tscn")
 var darkstars = preload("res://necromancer/minions/darkstar.tscn")
 
-var room = 1
+var room = 0
 
 @export_category("ref")
 @export var sprite:Sprite2D
@@ -31,7 +31,7 @@ var room = 1
 @export var summon_timer:Timer
 
 func _ready():
-	global_position = room_manager_ref.get_child(room).spawn.global_position
+	global_position = room_origins_ref.get_child(room).global_position
 
 func _input(_event):
 	if not rooted:

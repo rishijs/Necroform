@@ -144,15 +144,23 @@ position = Vector2(518, 5)
 position = Vector2(593, 4)
 room_number = 1
 
+[node name="RoomOrigins" type="Node2D" parent="." groups=["RoomOrigins"]]
+
+[node name="0" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(-456, 239)
+
+[node name="1" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(617, 239)
+
 [node name="Necromancer" parent="." instance=ExtResource("2_xqkux")]
 position = Vector2(-457, 211)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@402931" to="Traps/@Area2D@402931" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@402932" to="Traps/@Area2D@402932" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@402933" to="Traps/@Area2D@402933" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@410560" to="Traps/@Area2D@410560" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@410561" to="Traps/@Area2D@410561" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@410562" to="Traps/@Area2D@410562" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@402934" to="Traps/@Area2D@402934" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@402935" to="Traps/@Area2D@402935" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@410563" to="Traps/@Area2D@410563" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@410564" to="Traps/@Area2D@410564" method="_on_body_entered"]

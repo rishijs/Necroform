@@ -5,9 +5,6 @@ extends Area2D
 
 @export var room_number:int
 
-@export_category("refs")
-@export var spawn:Marker2D
-
 func _ready():
 	pass
 
