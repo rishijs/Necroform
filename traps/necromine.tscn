@@ -9,7 +9,7 @@ colors = PackedColorArray(0.588235, 0, 0.12549, 1, 1, 0.141176, 0.0470588, 1)
 gradient = SubResource("Gradient_qmc7v")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wrrq"]
-radius = 88.8144
+radius = 76.4199
 
 [node name="Necromine" type="Area2D" groups=["Mine"]]
 visible = false

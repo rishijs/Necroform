@@ -13,7 +13,9 @@ func _process(_delta):
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Skeleton") and visible:
+		explode()
+	elif body.is_in_group("Player"):
 		explode()
 
 func explode():

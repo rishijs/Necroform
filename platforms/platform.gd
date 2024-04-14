@@ -10,7 +10,7 @@ var speed = 100
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if bottom_start:
 		linear_velocity = speed * global_position.direction_to(top.global_position)
 		if global_position.y <= top.global_position.y:
@@ -23,5 +23,5 @@ func _physics_process(delta):
 			bottom_start = true
 	
 
-func _process(delta):
+func _process(_delta):
 	pass

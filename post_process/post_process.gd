@@ -5,7 +5,7 @@ extends CanvasLayer
 @export_category("refs")
 @export var awaken:ColorRect
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("awaken"):
 		if awaken.visible:
 			awaken.hide()
@@ -16,5 +16,5 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _process(_delta):
 	pass

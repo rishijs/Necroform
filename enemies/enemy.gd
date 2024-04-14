@@ -58,12 +58,12 @@ func attack():
 		
 	if target != null:
 		await get_tree().create_timer(0.25,false).timeout
-		target.hit.emit(dmg,knockback_strength)
-		
-		if target.health > 0:
-			await get_tree().create_timer(2,false).timeout
-			if targets.size() > 0:
-				attack()
+		if target != null:
+			target.hit.emit(dmg,knockback_strength)
+			if target.health > 0:
+				await get_tree().create_timer(2,false).timeout
+				if targets.size() > 0:
+					attack()
 		
 func switch_to_patrol_mode():
 	if patrol_mode == false and target == null:
@@ -88,5 +88,16 @@ func _on_area_2d_body_exited(body):
 
 func _on_hit(damage,knockback):
 	health -= damage
+	apply_knockback(knockback)
 	if health <= 0:
 		queue_free()
+
+func apply_knockback(strength):
+	var change : Vector2
+	if dir == 1:
+		change = Vector2(-strength * 2 * 30.0,-strength * 30.0)
+	elif dir == 0:
+		change = Vector2(strength * 2 * 30.0,-strength * 30.0)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",global_position+change,0.1)

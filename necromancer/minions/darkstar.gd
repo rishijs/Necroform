@@ -39,9 +39,19 @@ func _on_timer_timeout():
 
 func _on_hit(damage,knockback):
 	health -= damage
+	apply_knockback(knockback)
 	if health <= 0:
 		destruct()
+
+func apply_knockback(strength):
+	var change : Vector2
+	if dir == 1:
+		change = Vector2(-strength * 2 * 15.0,-strength * 15.0)
+	elif dir == 0:
+		change = Vector2(strength * 2 * 15.0,-strength * 15.0)
 	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",global_position+change,0.1)
 
 
 func _on_reveal_area_entered(area):

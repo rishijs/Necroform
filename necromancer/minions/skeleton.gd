@@ -50,11 +50,24 @@ func _on_mount(loc):
 
 func _on_hit(damage,knockback):
 	health -= damage
+	apply_knockback(knockback)
 	if health <= 0:
 		queue_free()
 
+func apply_knockback(strength):
+	var change : Vector2
+	if dir == 1:
+		change = Vector2(-strength * 2 * 10.0,-strength * 10.0)
+	elif dir == 0:
+		change = Vector2(strength * 2 * 10.0,-strength * 10.0)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",global_position+change,0.1)
+
 func attack(body):
-	body.hit.emit(dmg,knockback_strength)
+	await get_tree().create_timer(0.2,false).timeout
+	if body != null:
+		body.hit.emit(dmg,knockback_strength)
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemy"):

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cet8w02k5cq6a"]
+
+[ext_resource type="Script" path="res://camera_system/end_level.gd" id="1_sgaly"]
+
+[sub_resource type="Gradient" id="Gradient_hx3vo"]
+colors = PackedColorArray(0.0339776, 0.420989, 1.92523e-07, 1, 1, 1, 0.117647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6j5cc"]
+gradient = SubResource("Gradient_hx3vo")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8217h"]
+size = Vector2(61, 64)
+
+[node name="EndLevel" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_sgaly")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 10)
+texture = SubResource("GradientTexture2D_6j5cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+scale = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_8217h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

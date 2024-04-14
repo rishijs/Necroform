@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
 @onready var obj_pool = get_tree().get_first_node_in_group("Objects")
+@onready var camera_manager_ref = get_tree().get_first_node_in_group("CameraManager")
 @onready var room_origins_ref = get_tree().get_first_node_in_group("RoomOrigins")
 
-var max_health = 2
+var max_health = 4
 var health = 2
 var dmg = 0
 var speed = 150.0
 var jump_vel = -500.0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var base_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = base_gravity
 
 var rooted = false
 enum dirs {LEFT,RIGHT}
@@ -21,10 +23,10 @@ var awaken = false
 var can_spawn = true
 var max_mana = 10
 var mana = 10
-var mana_regen = 0.05
+var mana_regen = 0.1
 var awaken_max_mana_penalty = 1.0
 var min_max_mana = 5
-var spawn_cooldown = 1
+var spawn_cooldown = 0.1
 
 var skeletons = preload("res://necromancer/minions/skeleton.tscn")
 var skeleton_cost = 3
@@ -43,6 +45,7 @@ var room = 0
 @export var summon_timer:Timer
 
 func _ready():
+	room = Globals.player_room_number
 	global_position = room_origins_ref.get_child(room).global_position
 
 func _input(_event):
@@ -142,16 +145,30 @@ func _physics_process(delta):
 
 func _on_hit(damage,knockback):
 	health -= damage
-	apply_knockback(knockback)
-	screenshake()
 	if health <= 0:
 		get_tree().reload_current_scene()
+	else:
+		apply_knockback(knockback)
+		screenshake()
 
 func apply_knockback(strength):
-	pass
+	var change : Vector2
+	if dir == dirs.RIGHT:
+		change = Vector2(-strength * 2 * 20.0,-strength * 20.0)
+	elif dir == dirs.LEFT:
+		change = Vector2(strength * 2 * 20.0,-strength * 20.0)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",global_position+change,0.1)
 
+		
 func screenshake():
-	pass
+	var tween = get_tree().create_tween()
+	var offset = Vector2(randf_range(-1,1)*10,0)
+	var target = camera_manager_ref.get_child(room).global_position + offset
+	tween.tween_property(camera_manager_ref.get_child(room),"global_position",target,0.1)
+	await get_tree().create_timer(0.1,false).timeout
+	camera_manager_ref.get_child(room).global_position -= offset
 
 
 func _on_mana_regen_timeout():
