@@ -9,7 +9,7 @@ colors = PackedColorArray(0.737255, 0, 0, 1, 1, 0.172549, 1, 1)
 gradient = SubResource("Gradient_62t0j")
 fill_from = Vector2(0.788991, 1)
 
-[node name="Lasernode" type="Node2D" node_paths=PackedStringArray("laser_point", "timer")]
+[node name="Lasernode" type="Node2D" node_paths=PackedStringArray("laser_point", "timer") groups=["LaserNode"]]
 script = ExtResource("1_y3thm")
 laser_point = NodePath("laser_point")
 timer = NodePath("Timer")

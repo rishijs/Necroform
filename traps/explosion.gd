@@ -4,7 +4,7 @@ extends Node2D
 
 #@export_category("refs")
 #@export var shape:Polygon2D
-var damage = 1
+var dmg = 1
 var knockback_strength = 1
 var targets = []
 
@@ -13,10 +13,10 @@ func _ready():
 	#tween.tween_property(shape,"scale",Vector2.ONE*max_size_explosion,0.5)
 	for obj in targets:
 		if obj.is_in_group("Player"):
-			obj.hit.emit(damage,knockback_strength)
+			obj.hit.emit(dmg,knockback_strength)
 		if obj.is_in_group("Skeleton"):
 			if not obj.mounted:
-				obj.hit.emit(damage,knockback_strength)
+				obj.hit.emit(dmg,knockback_strength)
 
 func _on_timer_timeout():
 	call_deferred("queue_free")

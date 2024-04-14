@@ -9,7 +9,7 @@ size = Vector2(33, 1001)
 size = Vector2(10, 1000)
 
 [node name="Laser" type="Area2D" node_paths=PackedStringArray("timer", "col", "mesh") groups=["Laser"]]
-collision_mask = 71
+collision_mask = 199
 script = ExtResource("1_ftwkb")
 timer = NodePath("Timer")
 col = NodePath("CollisionShape2D")

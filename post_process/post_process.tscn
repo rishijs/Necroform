@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt55p75551jkr"]
+
+[ext_resource type="Script" path="res://post_process/post_process.gd" id="1_7pm34"]
+[ext_resource type="Shader" path="res://post_process/awaken.gdshader" id="1_b733w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e4bu"]
+shader = ExtResource("1_b733w")
+
+[node name="post_process" type="CanvasLayer" node_paths=PackedStringArray("awaken")]
+script = ExtResource("1_7pm34")
+awaken = NodePath("Awaken")
+
+[node name="Awaken" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7e4bu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2

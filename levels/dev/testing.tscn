@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxwh5063baalu"]
+[gd_scene load_steps=23 format=3 uid="uid://bxwh5063baalu"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_4nfsi"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_ijeud"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_u27tn"]
 [ext_resource type="PackedScene" uid="uid://cv8iu7uqsfmo5" path="res://enemies/patrol_area.tscn" id="8_vygl6"]
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="10_c8kjs"]
+[ext_resource type="PackedScene" uid="uid://bdcsqxgsgonmy" path="res://ui_elements/interface.tscn" id="10_kl3j5"]
+[ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="11_5j6eq"]
 
 [sub_resource type="Gradient" id="Gradient_f35mi"]
 colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.584314, 0.141176, 1, 1)
@@ -62,19 +64,16 @@ layer_0/tile_data = PackedInt32Array(262142, 0, 196608, 262151, 0, 262144, 26214
 [node name="LaserManager" type="Node2D" parent="." groups=["LaserManager"]]
 
 [node name="Lasernode" parent="LaserManager" instance=ExtResource("5_prvqu")]
-position = Vector2(739, 287)
-frequency = 30.0
+position = Vector2(735, 263)
 start_delay = 0.0
 
 [node name="Lasernode2" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
-position = Vector2(890, 287)
-frequency = 30.0
+position = Vector2(886, 263)
 start_delay = 0.25
 laser_point = NodePath("../Lasernode/laser_point")
 
 [node name="Lasernode3" parent="LaserManager" node_paths=PackedStringArray("laser_point") instance=ExtResource("5_prvqu")]
-position = Vector2(1033, 287)
-frequency = 30.0
+position = Vector2(1029, 263)
 laser_point = NodePath("../Lasernode/laser_point")
 
 [node name="Objects" type="Node2D" parent="." groups=["Objects"]]
@@ -177,7 +176,7 @@ patrol_right = NodePath("../PR")
 [node name="Necromancer" parent="." instance=ExtResource("2_xqkux")]
 position = Vector2(-457, 211)
 
-[node name="Interface" type="CanvasLayer" parent="."]
+[node name="Interface" parent="." instance=ExtResource("10_kl3j5")]
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -194,8 +193,10 @@ position = Vector2(-165, 244)
 bottom = NodePath("../bottom")
 top = NodePath("../top")
 
+[node name="PostProcess" parent="." instance=ExtResource("11_5j6eq")]
+
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@560077" to="Traps/@Area2D@560077" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@560078" to="Traps/@Area2D@560078" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@560079" to="Traps/@Area2D@560079" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@748542" to="Traps/@Area2D@748542" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@748543" to="Traps/@Area2D@748543" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@748544" to="Traps/@Area2D@748544" method="_on_body_entered"]

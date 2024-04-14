@@ -5,8 +5,9 @@ extends CharacterBody2D
 var speed = 250.0
 var hover_height = 100
 var health = 1
-var damage = 0
+var dmg = 0
 var dir = 1
+var awaken = false
 var speedboost = 1.25
 
 signal hit(damage,knockback)
@@ -16,11 +17,18 @@ signal hit(damage,knockback)
 
 func _ready():
 	player_ref.speed *= speedboost
-	
+	if awaken:
+		upgrade()
+
 func _physics_process(_delta):
 	velocity.x = speed
 	move_and_slide()
 
+func upgrade():
+	scale *= 2
+	player_ref.speed *= 1.2
+	player_ref.health = player_ref.max_health
+	
 func destruct():
 	player_ref.speed /= speedboost
 	call_deferred("queue_free")
@@ -39,3 +47,11 @@ func _on_hit(damage,knockback):
 func _on_reveal_area_entered(area):
 	if area.is_in_group("Mine"):
 		area.show()
+		if awaken:
+			area.explode()
+	if awaken:
+		if area.is_in_group("Laser"):
+			area.parent.frequency *= 2
+			area.queue_free()
+			
+		

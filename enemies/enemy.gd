@@ -4,7 +4,7 @@ extends CharacterBody2D
 var patrol_speed = 25.0
 var speed = 200.0
 var health = 3
-var damage = 1
+var dmg = 1
 var knockback_strength = 1
 #var target_detected = false
 var patrol_mode = true
@@ -57,7 +57,8 @@ func attack():
 				target = possible_target
 		
 	if target != null:
-		target.hit.emit(damage,knockback_strength)
+		await get_tree().create_timer(0.25,false).timeout
+		target.hit.emit(dmg,knockback_strength)
 		
 		if target.health > 0:
 			await get_tree().create_timer(2,false).timeout

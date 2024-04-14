@@ -5,9 +5,9 @@ extends CharacterBody2D
 
 var max_health = 2
 var health = 2
-var damage = 0
+var dmg = 0
 var speed = 150.0
-var jump_vel = -400.0
+var jump_vel = -500.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var rooted = false
@@ -17,11 +17,22 @@ var dir = dirs.RIGHT
 signal hit(damage,knockback)
 
 enum minions {SKELETON,DARKSTAR}
-var awakened = false
+var awaken = false
 var can_spawn = true
+var max_mana = 10
+var mana = 10
+var mana_regen = 0.05
+var awaken_max_mana_penalty = 1.0
+var min_max_mana = 5
 var spawn_cooldown = 1
+
 var skeletons = preload("res://necromancer/minions/skeleton.tscn")
+var skeleton_cost = 3
+var skeleton_awaken_cost = 4
 var darkstars = preload("res://necromancer/minions/darkstar.tscn")
+var darkstar_cost = 2
+var darkstar_awaken_cost = 7
+
 
 var room = 0
 
@@ -38,15 +49,32 @@ func _input(_event):
 	if not rooted:
 		if can_spawn:
 			if Input.is_action_just_pressed("summon1"):
-				spawn_minion(minions.SKELETON,3)
+				if awaken and mana >= skeleton_awaken_cost:
+					spawn_minion(minions.SKELETON,1)
+					mana -= skeleton_awaken_cost
+				elif not awaken and mana >= skeleton_cost:
+					spawn_minion(minions.SKELETON,3)
+					mana -= skeleton_awaken_cost
 			if Input.is_action_just_pressed("summon2"):
-				spawn_minion(minions.DARKSTAR,1)
+				if awaken and mana >= darkstar_awaken_cost:
+					spawn_minion(minions.DARKSTAR,1)
+					mana -= darkstar_awaken_cost
+				elif not awaken and mana >= darkstar_cost:
+					spawn_minion(minions.DARKSTAR,1)
+					mana -= darkstar_cost
 		if Input.is_action_just_pressed("left"):
 			dir = dirs.LEFT
 			sprite.flip_h = true
 		if Input.is_action_just_pressed("right"):
 			dir = dirs.RIGHT
 			sprite.flip_h = false
+	if Input.is_action_just_pressed("awaken"):
+		if awaken == true:
+			awaken = false
+		else:
+			awaken = true
+			max_mana = clampf(max_mana-1,min_max_mana,max_mana)
+			mana = clampf(mana,0,max_mana)
 
 func spawn_minion(type,n):
 	rooted = true
@@ -66,6 +94,7 @@ func spawn_minion(type,n):
 func spawn_skeleton():
 	var skeleton = skeletons.instantiate()
 	skeleton.dir = dir
+	skeleton.awaken = awaken
 	
 	if dir == dirs.LEFT:
 		skeleton.speed *= -1
@@ -78,6 +107,7 @@ func spawn_skeleton():
 func spawn_darkstar():
 	var darkstar = darkstars.instantiate()
 	darkstar.dir = dir
+	darkstar.awaken = awaken
 	
 	if dir == dirs.LEFT:
 		darkstar.speed *= -1
@@ -86,7 +116,10 @@ func spawn_darkstar():
 	elif dir == dirs.RIGHT:
 		obj_pool.add_child(darkstar)
 		darkstar.global_position = spawn_r.global_position
+
 	
+func jump_cut():
+	velocity.y /= 2
 	
 func _physics_process(delta):
 	if not is_on_floor():
@@ -94,6 +127,9 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_vel
+			
+	if Input.is_action_just_released("jump"):
+		jump_cut()
 
 	var direction = Input.get_axis("left", "right")
 	if direction and not rooted:
@@ -116,3 +152,8 @@ func apply_knockback(strength):
 
 func screenshake():
 	pass
+
+
+func _on_mana_regen_timeout():
+	if not awaken:
+		mana = clampf(mana+mana_regen,0,max_mana)
