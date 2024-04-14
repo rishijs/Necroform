@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxwh5063baalu"]
+[gd_scene load_steps=31 format=3 uid="uid://bxwh5063baalu"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_4nfsi"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_ijeud"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_ymddp"]
 [ext_resource type="PackedScene" uid="uid://cv6ylubngu6vt" path="res://traps/lasernode.tscn" id="5_prvqu"]
 [ext_resource type="PackedScene" uid="uid://crrb2u2b2ji88" path="res://camera_system/room_switch.tscn" id="6_eb01g"]
+[ext_resource type="Texture2D" uid="uid://bypwyltio6lsa" path="res://art/tileset/tilemapt_necrolines.png" id="6_l8jvs"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_u27tn"]
 [ext_resource type="PackedScene" uid="uid://cv8iu7uqsfmo5" path="res://enemies/patrol_area.tscn" id="8_vygl6"]
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="10_c8kjs"]
@@ -16,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="13_oda1a"]
 
 [sub_resource type="Gradient" id="Gradient_f35mi"]
-colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.584314, 0.141176, 1, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.379783, 0.00174705, 0.675394, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yc331"]
 gradient = SubResource("Gradient_f35mi")
@@ -50,6 +51,74 @@ size = Vector2(106.606, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyal4"]
 size = Vector2(3.37389, 651)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycndb"]
+texture = ExtResource("6_l8jvs")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b724x"]
+tile_size = Vector2i(64, 64)
+sources/4 = SubResource("TileSetAtlasSource_ycndb")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t8prc"]
+load_path = "res://.godot/imported/tileset_necrolines_complete.png-6e6d24aff25b5368a82e04bf1114ef85.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jcye"]
+texture = SubResource("CompressedTexture2D_t8prc")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+32:0/0 = 0
+33:0/0 = 0
+34:0/0 = 0
+35:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bwf4h"]
+sources/0 = SubResource("TileSetAtlasSource_8jcye")
+
 [node name="Testing" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -81,6 +150,7 @@ laser_point = NodePath("../Lasernode/laser_point")
 [node name="Objects" type="Node2D" parent="." groups=["Objects"]]
 
 [node name="TempBounds" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(-1, 292)
 scale = Vector2(18.08, 1)
 collision_layer = 31
@@ -134,6 +204,15 @@ texture = SubResource("GradientTexture2D_4586u")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="TempBounds"]
 position = Vector2(76.2842, -302.82)
 shape = SubResource("RectangleShape2D_qyal4")
+
+[node name="Level" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_b724x")
+format = 2
+layer_0/tile_data = PackedInt32Array(262151, 4, 1, 262152, 65540, 0, 262153, 65540, 2, 262154, 65540, 0, 262155, 65540, 0, 262156, 131076, 2, 262157, 65540, 0, 262158, 65540, 0, 262159, 131076, 3, 262160, 4, 2, 262161, 131076, 2, 262162, 65540, 0, 262163, 65540, 0, 262164, 131076, 2, 327672, 65540, 0, 327673, 65540, 0, 327674, 4, 2, 327675, 65540, 0, 327676, 131076, 3, 327677, 65540, 0, 327678, 4, 3, 327679, 131076, 2, 262144, 65540, 0, 262145, 65540, 3, 262146, 65540, 3, 262147, 65540, 1, 327671, 196612, 1, 262135, 196612, 0, 196599, 196612, 0, 131063, 196612, 0, 65527, 196612, 0, -9, 196612, 0, -65545, 196612, 0, -131081, 196612, 0, -196617, 196612, 0, -262153, 131076, 1, -262152, 65540, 0, -262151, 131076, 2, -262150, 65540, 0, -262149, 131076, 3, -262148, 65540, 0, -262147, 131076, 2, -262146, 65540, 0, -262145, 65540, 0, -327680, 131076, 2, -327679, 65540, 0, -327678, 65540, 0, -327677, 131076, 3, -327676, 65540, 0, -327675, 131076, 2, -327674, 65540, 0, -327673, 65540, 0, -327672, 65540, 0, -327671, 65540, 0, -327670, 131076, 3, -327669, 65540, 0, -327668, 131076, 2, -327667, 65540, 0, -327666, 65540, 0, -327665, 65540, 0, -327664, 131076, 3, -327663, 131076, 2, -327662, 65540, 0, -327661, 65540, 0, -327660, 131076, 3, -327659, 196612, 2, -262123, 196612, 0, -196587, 196612, 0, -131051, 196612, 0, -65515, 196612, 0, 21, 196612, 0, 65557, 196612, 0, 131093, 196612, 0, 196629, 196612, 0, 262165, 131076, 0)
+
+[node name="Detail" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_bwf4h")
+format = 2
 
 [node name="CameraManager" type="Node2D" parent="." groups=["CameraManager"]]
 
@@ -204,6 +283,6 @@ position = Vector2(1355, -27)
 
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@842668" to="Traps/@Area2D@842668" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@842669" to="Traps/@Area2D@842669" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@842670" to="Traps/@Area2D@842670" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20178" to="Traps/@Area2D@20178" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20179" to="Traps/@Area2D@20179" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20180" to="Traps/@Area2D@20180" method="_on_body_entered"]
