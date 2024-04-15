@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cet8w02k5cq6a"]
+[gd_scene load_steps=5 format=3 uid="uid://cet8w02k5cq6a"]
 
 [ext_resource type="Script" path="res://camera_system/end_level.gd" id="1_sgaly"]
 [ext_resource type="Texture2D" uid="uid://crr4uws04dlra" path="res://art/game_elements/finish.png" id="2_d4wbo"]
+[ext_resource type="AudioStream" uid="uid://sc7fkct0iq1" path="res://audio/sfx/finish.wav" id="3_j4pxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8217h"]
 size = Vector2(61, 43.5)
@@ -21,5 +22,9 @@ texture = ExtResource("2_d4wbo")
 position = Vector2(-0.5, 1.49999)
 scale = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_8217h")
+
+[node name="level_complete" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_j4pxt")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

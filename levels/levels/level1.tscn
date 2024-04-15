@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://f1ldlpd071h5"]
+[gd_scene load_steps=19 format=3 uid="uid://f1ldlpd071h5"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_x7a81"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_gm6ob"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="11_bbwb8"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="12_hrfpl"]
 [ext_resource type="PackedScene" uid="uid://cet8w02k5cq6a" path="res://camera_system/end_level.tscn" id="12_lkvyk"]
+[ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="12_ptj0r"]
 [ext_resource type="PackedScene" uid="uid://bdcsqxgsgonmy" path="res://ui_elements/interface.tscn" id="13_eotj0"]
 [ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="14_5eks7"]
 
@@ -162,3 +163,16 @@ visible = false
 level_index = 1
 
 [node name="DeathZone" parent="." instance=ExtResource("11_bbwb8")]
+
+[node name="music" type="AudioStreamPlayer" parent="." groups=["GameMusic"]]
+stream = ExtResource("12_ptj0r")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629500" to="Traps/@Area2D@629500" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629501" to="Traps/@Area2D@629501" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629502" to="Traps/@Area2D@629502" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629503" to="Traps/@Area2D@629503" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629504" to="Traps/@Area2D@629504" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@629505" to="Traps/@Area2D@629505" method="_on_body_entered"]

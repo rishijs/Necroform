@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctpxu5middbix"]
+[gd_scene load_steps=19 format=3 uid="uid://ctpxu5middbix"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_fw4e8"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_6b8jd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bypwyltio6lsa" path="res://art/tileset/tilemapt_necrolines.png" id="5_ueyqb"]
 [ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="6_7v1cm"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="7_4kowr"]
+[ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="12_xnrfj"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
 colors = PackedColorArray(0.882353, 0.00392157, 0.729412, 1, 0.129584, 0.000223507, 0.255083, 1)
@@ -218,18 +219,7 @@ victory_screen = NodePath("../Victory")
 visible = false
 level_index = 4
 
-[connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608129" to="Traps/@Area2D@608129" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608130" to="Traps/@Area2D@608130" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608131" to="Traps/@Area2D@608131" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608132" to="Traps/@Area2D@608132" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608133" to="Traps/@Area2D@608133" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608139" to="Traps/@Area2D@608139" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608140" to="Traps/@Area2D@608140" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608141" to="Traps/@Area2D@608141" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608142" to="Traps/@Area2D@608142" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608143" to="Traps/@Area2D@608143" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608144" to="Traps/@Area2D@608144" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608145" to="Traps/@Area2D@608145" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608146" to="Traps/@Area2D@608146" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@608147" to="Traps/@Area2D@608147" method="_on_body_entered"]
+[node name="music" type="AudioStreamPlayer" parent="." groups=["GameMusic"]]
+stream = ExtResource("12_xnrfj")
+volume_db = -10.0
+autoplay = true

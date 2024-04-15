@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dax3f1xqn4kxh"]
+[gd_scene load_steps=9 format=3 uid="uid://dax3f1xqn4kxh"]
 
 [ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_erpu1"]
 [ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="2_p30ak"]
+[ext_resource type="AudioStream" uid="uid://dv8d20b3wnm2n" path="res://audio/sfx/awaken.wav" id="3_1e737"]
+[ext_resource type="AudioStream" uid="uid://c5wccpdkh5686" path="res://audio/sfx/summon.wav" id="4_5gvpw"]
+[ext_resource type="AudioStream" uid="uid://ba1mgepk5dwiv" path="res://audio/sfx/player_damaged.wav" id="5_0tlcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
 size = Vector2(28, 102)
@@ -50,6 +53,19 @@ autostart = true
 position = Vector2(6, -29)
 scale = Vector2(3.36719, 3.41543)
 texture = SubResource("GradientTexture2D_aj81o")
+
+[node name="awaken" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_1e737")
+
+[node name="summon" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_5gvpw")
+volume_db = -20.0
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_0tlcx")
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="ManaRegen" to="." method="_on_mana_regen_timeout"]

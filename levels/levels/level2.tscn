@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cu3e2mxxe60qh"]
+[gd_scene load_steps=23 format=3 uid="uid://cu3e2mxxe60qh"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_ouhi3"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_yxjbc"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="7_r0ncs"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_on5y4"]
 [ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="13_ibby0"]
+[ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="16_iehbx"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
 colors = PackedColorArray(0.580392, 0.00392157, 0.729412, 1, 0.129584, 0.000223507, 0.255083, 1)
@@ -297,3 +298,8 @@ position = Vector2(39, 337)
 
 [node name="DeathZone2" parent="." instance=ExtResource("13_ibby0")]
 position = Vector2(2011, 337)
+
+[node name="music" type="AudioStreamPlayer" parent="." groups=["GameMusic"]]
+stream = ExtResource("16_iehbx")
+volume_db = -10.0
+autoplay = true

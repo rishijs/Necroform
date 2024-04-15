@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7wxwamrlrppk"]
+[gd_scene load_steps=23 format=3 uid="uid://c7wxwamrlrppk"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_xfoxb"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_k3rbe"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="7_vc4sw"]
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="7_whd11"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_xyupb"]
+[ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="15_faxco"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
 offsets = PackedFloat32Array(0, 0.675325)
@@ -410,3 +411,8 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("7_vc4sw")]
 visible = false
 level_index = 3
+
+[node name="music" type="AudioStreamPlayer" parent="." groups=["GameMusic"]]
+stream = ExtResource("15_faxco")
+volume_db = -10.0
+autoplay = true

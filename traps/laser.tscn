@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://p5ghooijyu0c"]
+[gd_scene load_steps=6 format=3 uid="uid://p5ghooijyu0c"]
 
 [ext_resource type="Script" path="res://traps/laser.gd" id="1_ftwkb"]
 [ext_resource type="Texture2D" uid="uid://dnv18yc4jwo6u" path="res://art/traps/laser_warning.png" id="2_ta1ra"]
 [ext_resource type="Texture2D" uid="uid://b20dvig5n6kf7" path="res://art/traps/laser.png" id="3_joiw6"]
+[ext_resource type="AudioStream" uid="uid://clef3bfotie64" path="res://audio/sfx/laser.wav" id="4_37xti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xiytu"]
 size = Vector2(33, 640)
@@ -35,6 +36,10 @@ texture_filter = 3
 position = Vector2(1, -319)
 scale = Vector2(1, 10)
 texture = ExtResource("3_joiw6")
+
+[node name="laser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_37xti")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

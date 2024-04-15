@@ -53,6 +53,7 @@ func _input(_event):
 	if not rooted:
 		if can_spawn:
 			if Input.is_action_just_pressed("summon1"):
+				%summon.play()
 				if awaken and mana >= skeleton_awaken_cost:
 					spawn_minion(minions.SKELETON,1)
 					mana -= skeleton_awaken_cost
@@ -60,6 +61,7 @@ func _input(_event):
 					spawn_minion(minions.SKELETON,3)
 					mana -= skeleton_awaken_cost
 			if Input.is_action_just_pressed("summon2"):
+				%summon.play()
 				if awaken and mana >= darkstar_awaken_cost:
 					spawn_minion(minions.DARKSTAR,1)
 					mana -= darkstar_awaken_cost
@@ -73,6 +75,7 @@ func _input(_event):
 			dir = dirs.RIGHT
 			sprite.flip_h = true
 	if Input.is_action_just_pressed("awaken"):
+		%awaken.play()
 		if awaken == true:
 			awaken = false
 		else:
@@ -148,6 +151,7 @@ func _physics_process(delta):
 
 func _on_hit(damage,knockback):
 	health -= damage
+	%hit.play()
 	if health <= 0:
 		get_tree().reload_current_scene()
 	else:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4sappmku6i02"]
+[gd_scene load_steps=3 format=3 uid="uid://c4sappmku6i02"]
 
 [ext_resource type="Script" path="res://traps/explosion.gd" id="1_034hs"]
+[ext_resource type="AudioStream" uid="uid://drnjexb5o6m17" path="res://audio/sfx/explosion.wav" id="2_kard1"]
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_034hs")
@@ -15,5 +16,9 @@ polygon = PackedVector2Array(-148, -1, -105, -102, 1, -149, 107, -100, 145, -3, 
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_kard1")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
