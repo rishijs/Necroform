@@ -21,3 +21,4 @@ func _process(_delta):
 
 func _on_next_pressed():
 	get_tree().change_scene_to_file(levels[level_index])
+	Globals.player_room_number = 0

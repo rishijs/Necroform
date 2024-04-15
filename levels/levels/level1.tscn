@@ -162,11 +162,3 @@ visible = false
 level_index = 1
 
 [node name="DeathZone" parent="." instance=ExtResource("11_bbwb8")]
-
-[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240095" to="Traps/@Area2D@240095" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240096" to="Traps/@Area2D@240096" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240097" to="Traps/@Area2D@240097" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240098" to="Traps/@Area2D@240098" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240099" to="Traps/@Area2D@240099" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@240100" to="Traps/@Area2D@240100" method="_on_body_entered"]

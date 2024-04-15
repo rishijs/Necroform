@@ -6,6 +6,7 @@ extends Node2D
 @export var frequency : float = 3.0
 @export var start_delay : float = 0.5
 @export var room : int = 1
+@export var random_angle : bool = false
 
 var lasers = preload("res://traps/laser.tscn")
 
@@ -23,7 +24,10 @@ func fire_laser():
 	laser.parent = self
 	add_child(laser)
 	laser.global_position = global_position
-	laser.global_rotation = angle
+	if not random_angle:
+		laser.global_rotation = deg_to_rad(angle)
+	else:
+		laser.global_rotation = deg_to_rad(angle+ randf_range(-30,30))
 
 func _process(_delta):
 	pass

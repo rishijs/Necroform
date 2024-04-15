@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="2_p30ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
-size = Vector2(41, 102)
+size = Vector2(28, 102)
 
 [sub_resource type="Gradient" id="Gradient_d8idv"]
 offsets = PackedFloat32Array(0.0194805, 0.75974, 1)
@@ -19,6 +19,7 @@ fill_to = Vector2(0.862385, 0.238532)
 [node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spawn_l", "spawn_r") groups=["Player"]]
 collision_layer = 2
 collision_mask = 167
+floor_max_angle = 1.39626
 script = ExtResource("1_erpu1")
 sprite = NodePath("AnimatedSprite2D")
 spawn_l = NodePath("SpawnL")
@@ -32,7 +33,7 @@ animation = &"idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -20)
+position = Vector2(1, -20)
 shape = SubResource("RectangleShape2D_ixjji")
 
 [node name="SpawnL" type="Marker2D" parent="."]

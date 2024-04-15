@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var patrol_speed = 25.0
 var speed = 200.0
-var health = 3
+var health = 5
 var dmg = 1
 var knockback_strength = 1
 #var target_detected = false
@@ -20,9 +20,11 @@ signal hit(damage,knockback)
 @export var patrol_left:Marker2D
 @export var patrol_right:Marker2D
 @export var sprite:AnimatedSprite2D
+@export var health_text:Label
 
 func _ready():
 	sprite.play("walking")
+	health_text.text = str(health)
 	
 func _physics_process(delta):
 	if not is_on_floor():
@@ -65,7 +67,7 @@ func attack():
 		if target != null:
 			target.hit.emit(dmg,knockback_strength)
 			if target.health > 0:
-				await get_tree().create_timer(2,false).timeout
+				await get_tree().create_timer(1,false).timeout
 				if targets.size() > 0:
 					attack()
 		
@@ -92,6 +94,7 @@ func _on_area_2d_body_exited(body):
 
 func _on_hit(damage,knockback):
 	health -= damage
+	health_text.text = str(health)
 	apply_knockback(knockback)
 	if health <= 0:
 		queue_free()

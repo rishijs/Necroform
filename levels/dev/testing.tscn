@@ -167,19 +167,21 @@ position = Vector2(617, 239)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PL" type="Marker2D" parent="Enemies"]
+[node name="PatrolArea" parent="Enemies" instance=ExtResource("8_vygl6")]
+
+[node name="def_enemy" type="Node2D" parent="Enemies"]
+
+[node name="PL" type="Marker2D" parent="Enemies/def_enemy"]
 position = Vector2(841, 219)
 
-[node name="PR" type="Marker2D" parent="Enemies"]
+[node name="PR" type="Marker2D" parent="Enemies/def_enemy"]
 position = Vector2(1289, 228)
 
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_u27tn")]
+[node name="Enemy" parent="Enemies/def_enemy" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_u27tn")]
 position = Vector2(1224, 227)
-patrol_range = NodePath("../PatrolArea")
+patrol_range = NodePath("../../PatrolArea")
 patrol_left = NodePath("../PL")
 patrol_right = NodePath("../PR")
-
-[node name="PatrolArea" parent="Enemies" instance=ExtResource("8_vygl6")]
 
 [node name="Necromancer" parent="." instance=ExtResource("2_xqkux")]
 position = Vector2(-457, 228)

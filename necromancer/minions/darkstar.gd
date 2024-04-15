@@ -30,6 +30,7 @@ func _physics_process(_delta):
 
 func upgrade():
 	scale *= 2
+	health *= 10
 	player_ref.speed *= 1.2
 	player_ref.health = player_ref.max_health
 	sprite.texture = awaken_texture
@@ -67,7 +68,7 @@ func _on_reveal_area_entered(area):
 			area.explode()
 	if awaken:
 		if area.is_in_group("Laser"):
-			area.parent.frequency *= 2
+			area.parent.frequency *= 5
 			area.queue_free()
 			
 		

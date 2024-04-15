@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctpxu5middbix"]
+[gd_scene load_steps=18 format=3 uid="uid://ctpxu5middbix"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_fw4e8"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_6b8jd"]
@@ -7,16 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://cet8w02k5cq6a" path="res://camera_system/end_level.tscn" id="4_5ykrm"]
 [ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_c63ew"]
 [ext_resource type="PackedScene" uid="uid://bdcsqxgsgonmy" path="res://ui_elements/interface.tscn" id="5_2kpfl"]
+[ext_resource type="PackedScene" uid="uid://cv6ylubngu6vt" path="res://traps/lasernode.tscn" id="5_c6q8f"]
 [ext_resource type="Texture2D" uid="uid://bypwyltio6lsa" path="res://art/tileset/tilemapt_necrolines.png" id="5_ueyqb"]
 [ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="6_7v1cm"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="7_4kowr"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
-colors = PackedColorArray(0.400173, 0.00201225, 0.731256, 1, 0.129584, 0.000223507, 0.255083, 1)
+colors = PackedColorArray(0.882353, 0.00392157, 0.729412, 1, 0.129584, 0.000223507, 0.255083, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dp42f"]
 gradient = SubResource("Gradient_iun2b")
-fill_from = Vector2(0.43578, 1)
+fill = 1
+fill_from = Vector2(0.46789, 0.614679)
 fill_to = Vector2(0.472477, 0)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_643ka"]
@@ -118,19 +120,75 @@ blend_mode = 1
 position = Vector2(-2, 2)
 tile_set = SubResource("TileSet_5m2l3")
 format = 2
+layer_0/tile_data = PackedInt32Array(262142, 0, 196608, 196608, 0, 196608, 196611, 0, 196608, 196610, 0, 196608, 196613, 0, 196608, 131071, 0, 196608, 65537, 0, 196608, 65539, 0, 196608, 65541, 0, 196608, -1, 0, 196608, -65535, 0, 196608, -65533, 0, 196608, -131067, 0, 196608, -196608, 0, 196608, -196606, 0, 196608)
 
 [node name="LaserManager" type="Node2D" parent="." groups=["LaserManager"]]
+
+[node name="Lasernode2" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(-211, 253)
+room = 0
+random_angle = true
+
+[node name="Lasernode3" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(-49, 254)
+start_delay = 1.5
+room = 0
+random_angle = true
+
+[node name="Lasernode5" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(112, 254)
+start_delay = 2.5
+room = 0
+random_angle = true
+
+[node name="Lasernode7" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(263, 255)
+start_delay = 3.5
+room = 0
+random_angle = true
+
+[node name="Lasernode9" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(-105, -255)
+rotation = -3.14159
+angle = 180.0
+room = 0
+random_angle = true
+
+[node name="Lasernode12" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(54, -254)
+rotation = -3.14159
+angle = 180.0
+start_delay = 1.5
+room = 0
+random_angle = true
+
+[node name="Lasernode14" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(210, -253)
+rotation = -3.14159
+angle = 180.0
+start_delay = 2.5
+room = 0
+random_angle = true
+
+[node name="Lasernode16" parent="LaserManager" instance=ExtResource("5_c6q8f")]
+position = Vector2(362, -253)
+rotation = -3.14159
+angle = 180.0
+start_delay = 3.5
+room = 0
+random_angle = true
 
 [node name="Objects" type="Node2D" parent="." groups=["Objects"]]
 
 [node name="Level" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ftnen")
 format = 2
-layer_0/tile_data = PackedInt32Array(327672, 196612, 3, 327673, 196612, 3, 327674, 196612, 3, 327675, 196612, 3, 327676, 196612, 3, 327677, 196612, 3, 327678, 196612, 3, 327679, 196612, 3, 262144, 196612, 3, 262145, 196612, 3, 262146, 196612, 3, 262147, 196612, 3, 327671, 196612, 3, 262135, 196612, 3, 196599, 196612, 3, 131063, 196612, 3, 65527, 196612, 3, -9, 196612, 3, -65545, 196612, 3, -131081, 196612, 3, -196617, 196612, 3, -262153, 196612, 3, -262152, 196612, 3, -262151, 196612, 3, -262150, 196612, 3, -262149, 196612, 3, -262148, 196612, 3, -262147, 196612, 3, -262146, 196612, 3, -262145, 196612, 3, -327680, 196612, 3, -327679, 196612, 3, -327678, 196612, 3, -327673, 196612, 3, -327674, 196612, 3, -327675, 196612, 3, -327676, 196612, 3, -327677, 196612, 3, 262148, 196612, 3, 262149, 196612, 3, 262150, 196612, 3, 262151, 196612, 3, -327672, 196612, 3, 262152, 196612, 3, 196616, 196612, 3, 131080, 196612, 3, 65544, 196612, 3, 8, 196612, 3, -65528, 196612, 3, -131064, 196612, 3, -196600, 196612, 3, -262136, 196612, 3, -196616, 131076, 1, -196615, 65540, 0, -196614, 65540, 0, -196613, 65540, 0, -196612, 65540, 0, -196611, 65540, 0, -196610, 65540, 0, -196609, 65540, 0, -262144, 65540, 0, -262143, 65540, 0, -262142, 65540, 0, -262141, 65540, 0, -262140, 65540, 0, -262139, 65540, 0, -262138, 65540, 0, -262137, 196612, 2, -196601, 196612, 0, -131065, 196612, 0, -65529, 196612, 0, 7, 196612, 0, 65543, 196612, 0, 131079, 196612, 0, 196615, 131076, 0, 196614, 65540, 0, 196613, 65540, 0, 196612, 65540, 0, 196611, 65540, 0, 196610, 65540, 0, 196609, 65540, 0, 196608, 65540, 0, 262143, 65540, 0, 262142, 65540, 0, 262141, 65540, 0, 262140, 65540, 0, 262139, 65540, 0, 262138, 65540, 0, 262137, 65540, 0, 262136, 196612, 1, 196600, 196612, 0, 131064, 196612, 0, 65528, 196612, 0, -8, 196612, 0, -65544, 196612, 0, -131080, 196612, 0, -393212, 196612, 3, -393213, 196612, 3, -393216, 196612, 3, -327681, 196612, 3, -327682, 196612, 3, -327683, 196612, 3, -327684, 196612, 3, -327685, 196612, 3, -327686, 196612, 3)
+layer_0/tile_data = PackedInt32Array(327672, 196612, 1, 327673, 65540, 0, 327674, 65540, 0, 327675, 65540, 0, 327676, 65540, 0, 327677, 65540, 0, 327678, 65540, 0, 327679, 65540, 0, 262144, 65540, 0, 262145, 65540, 0, 262146, 65540, 0, 262147, 65540, 0, 327671, 196612, 3, 262135, 196612, 3, 196599, 196612, 3, 131063, 196612, 3, 65527, 196612, 3, -9, 196612, 3, -65545, 196612, 3, -131081, 196612, 3, -196617, 196612, 3, -262153, 196612, 3, -262152, 131076, 1, -262151, 65540, 0, -262150, 65540, 0, -262149, 65540, 0, -262148, 65540, 0, -262147, 65540, 0, -262146, 65540, 0, -262145, 65540, 0, -327680, 65540, 0, -327679, 65540, 0, -327678, 65540, 0, -327673, 196612, 2, -327674, 65540, 0, -327675, 65540, 0, -327676, 65540, 0, -327677, 65540, 0, 262148, 65540, 0, 262149, 65540, 0, 262150, 65540, 0, 262151, 131076, 0, -327672, 196612, 3, 262152, 196612, 3, 196616, 196612, 3, 131080, 196612, 3, 65544, 196612, 3, 8, 196612, 3, -65528, 196612, 3, -131064, 196612, 3, -196600, 196612, 3, -262136, 196612, 3, -196616, 196612, 0, -196615, 196612, 3, -196614, 196612, 3, -196613, 196612, 3, -196612, 196612, 3, -196611, 196612, 3, -196610, 196612, 3, -196609, 196612, 3, -262144, 196612, 3, -262143, 196612, 3, -262142, 196612, 3, -262141, 196612, 3, -262140, 196612, 3, -262139, 196612, 3, -262138, 196612, 3, -262137, 196612, 0, -196601, 196612, 0, -131065, 196612, 0, -65529, 196612, 0, 7, 196612, 0, 65543, 196612, 0, 131079, 196612, 0, 196615, 196612, 0, 196614, 196612, 3, 196613, 196612, 3, 196612, 196612, 3, 196611, 196612, 3, 196610, 196612, 3, 196609, 196612, 3, 196608, 196612, 3, 262143, 196612, 3, 262142, 196612, 3, 262141, 196612, 3, 262140, 196612, 3, 262139, 196612, 3, 262138, 196612, 3, 262137, 196612, 3, 262136, 196612, 0, 196600, 196612, 0, 131064, 196612, 0, 65528, 196612, 0, -8, 196612, 0, -65544, 196612, 0, -131080, 196612, 0, -393212, 196612, 3, -393213, 196612, 3, -393216, 196612, 3, -327681, 196612, 3, -327682, 196612, 3, -327683, 196612, 3, -327684, 196612, 3, -327685, 196612, 3, -327686, 196612, 3)
 
 [node name="CameraManager" type="Node2D" parent="." groups=["CameraManager"]]
 
 [node name="Camera2D" type="Camera2D" parent="CameraManager"]
+zoom = Vector2(1.15, 1.05)
 
 [node name="RoomManager" type="Node2D" parent="." groups=["RoomManager"]]
 
@@ -149,6 +207,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="EndLevel" parent="." node_paths=PackedStringArray("victory_screen") instance=ExtResource("4_5ykrm")]
 position = Vector2(431, 4)
+scale = Vector2(1, 1.4)
 victory_screen = NodePath("../Victory")
 
 [node name="Interface" parent="." instance=ExtResource("5_2kpfl")]
@@ -158,3 +217,19 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("7_4kowr")]
 visible = false
 level_index = 4
+
+[connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608129" to="Traps/@Area2D@608129" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608130" to="Traps/@Area2D@608130" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608131" to="Traps/@Area2D@608131" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608132" to="Traps/@Area2D@608132" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608133" to="Traps/@Area2D@608133" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608139" to="Traps/@Area2D@608139" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608140" to="Traps/@Area2D@608140" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608141" to="Traps/@Area2D@608141" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608142" to="Traps/@Area2D@608142" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608143" to="Traps/@Area2D@608143" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608144" to="Traps/@Area2D@608144" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608145" to="Traps/@Area2D@608145" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608146" to="Traps/@Area2D@608146" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@608147" to="Traps/@Area2D@608147" method="_on_body_entered"]

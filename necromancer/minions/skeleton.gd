@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed = 200.0
+var speed = 100.0
 var health = 1
 var dmg = 1
 var dir = 1
@@ -69,7 +69,7 @@ func apply_knockback(strength):
 	tween.tween_property(self,"global_position",global_position+change,0.1)
 
 func attack(body):
-	await get_tree().create_timer(0.2,false).timeout
+	await get_tree().create_timer(1.0,false).timeout
 	if body != null:
 		body.hit.emit(dmg,knockback_strength)
 

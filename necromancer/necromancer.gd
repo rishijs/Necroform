@@ -8,7 +8,7 @@ var max_health = 4
 var health = 2
 var dmg = 0
 var speed = 150.0
-var jump_vel = -400.0
+var jump_vel = -450.0
 var base_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = base_gravity
 
@@ -46,6 +46,7 @@ var room = 0
 func _ready():
 	room = Globals.player_room_number
 	global_position = room_origins_ref.get_child(room).global_position
+	camera_manager_ref.get_child(room).make_current()
 	sprite.play("idle")
 
 func _input(_event):
@@ -85,13 +86,15 @@ func spawn_minion(type,n):
 	for i in range(n):
 		match type:
 			minions.SKELETON:
-				await get_tree().create_timer(0.25,false).timeout
+				await get_tree().create_timer(0.15,false).timeout
 				spawn_skeleton()
 			minions.DARKSTAR:
 				await get_tree().create_timer(0.25,false).timeout
 				spawn_darkstar()
 	rooted = false
+	speed *= 2
 	await get_tree().create_timer(spawn_cooldown,false).timeout
+	speed /= 2
 	can_spawn = true
 
 func spawn_skeleton():
