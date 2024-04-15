@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://by2jknxptjq1s"]
+[gd_resource type="SpriteFrames" load_steps=30 format=3 uid="uid://by2jknxptjq1s"]
 
 [ext_resource type="Texture2D" uid="uid://dywr2hqxsq6ru" path="res://art/necromancer/necromancer_attack.png" id="1_2y1u3"]
 [ext_resource type="Texture2D" uid="uid://bym5ep0jlqsvy" path="res://art/necromancer/necromancer_idle.png" id="2_ras6w"]
@@ -22,6 +22,26 @@ atlas = ExtResource("1_2y1u3")
 region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4rrf"]
+atlas = ExtResource("1_2y1u3")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cigcp"]
+atlas = ExtResource("1_2y1u3")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ce16"]
+atlas = ExtResource("1_2y1u3")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyyt5"]
+atlas = ExtResource("1_2y1u3")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmhf5"]
+atlas = ExtResource("1_2y1u3")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnewv"]
 atlas = ExtResource("1_2y1u3")
 region = Rect2(1024, 0, 256, 256)
 
@@ -105,6 +125,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cigcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ce16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyyt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmhf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnewv")
+}],
+"loop": true,
+"name": &"attack_loop",
 "speed": 5.0
 }, {
 "frames": [{

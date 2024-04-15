@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://472v3wxqs3qj"]
+[gd_scene load_steps=8 format=3 uid="uid://472v3wxqs3qj"]
 
 [ext_resource type="Script" path="res://ui_elements/main_menu.gd" id="1_6mc7n"]
 [ext_resource type="AudioStream" uid="uid://djqyj1kbybt0w" path="res://audio/music/NecromancerMenu.ogg" id="2_5t2n0"]
 [ext_resource type="FontFile" uid="uid://bn1e0kb6k1h2y" path="res://fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="2_rys0r"]
+[ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="4_gl1w4"]
+[ext_resource type="SpriteFrames" uid="uid://dwvbhaohhwb7x" path="res://necromancer/minions/skeleton_sprite.tres" id="5_f5e7d"]
+[ext_resource type="SpriteFrames" uid="uid://cevb2syadovkc" path="res://enemies/enemy_sprite.tres" id="6_sslrw"]
+[ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="7_wgiwp"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_6mc7n")
@@ -13,33 +17,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.117647, 0, 0.215686, 1)
+color = Color(0.254902, 0, 0.431373, 1)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.341
-anchor_top = 0.296
-anchor_right = 0.671
-anchor_bottom = 0.406
-offset_left = 0.167969
-offset_top = 2.192
-offset_right = 0.00799561
-offset_bottom = -0.0880127
+anchor_left = 0.208
+anchor_top = 0.211
+anchor_right = 0.796
+anchor_bottom = 0.397
+offset_left = 0.384003
+offset_top = 0.271988
+offset_right = 0.00793457
+offset_bottom = -0.256012
 theme_override_fonts/font = ExtResource("2_rys0r")
-theme_override_font_sizes/font_size = 50
-text = "NECROMANCER"
+theme_override_font_sizes/font_size = 100
+text = "NECROFORM"
+horizontal_alignment = 1
 
 [node name="next" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.458
+anchor_left = 0.414
 anchor_top = 0.481
-anchor_right = 0.542
-anchor_bottom = 0.519
-offset_left = 0.383972
+anchor_right = 0.576
+anchor_bottom = 0.586
+offset_left = 0.0719604
 offset_top = 0.311981
-offset_right = 1.61597
-offset_bottom = 6.68796
+offset_right = 0.447937
+offset_bottom = 0.271973
 theme_override_fonts/font = ExtResource("2_rys0r")
+theme_override_font_sizes/font_size = 50
 text = "PLAY
 "
 
@@ -48,5 +54,29 @@ unique_name_in_owner = true
 stream = ExtResource("2_5t2n0")
 volume_db = -10.0
 bus = &"Music"
+
+[node name="necro" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(208, 414)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("4_gl1w4")
+animation = &"attack_loop"
+
+[node name="form" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(804, 514)
+sprite_frames = ExtResource("5_f5e7d")
+animation = &"walking"
+
+[node name="enemy" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1007, 493)
+sprite_frames = ExtResource("6_sslrw")
+animation = &"attack"
+flip_h = true
+
+[node name="PostProcess" parent="." node_paths=PackedStringArray("awaken", "noise") instance=ExtResource("7_wgiwp")]
+awaken = NodePath("")
+noise = NodePath("")
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

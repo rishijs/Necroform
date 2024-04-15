@@ -430,6 +430,7 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("7_vc4sw")]
 visible = false
 level_index = 3
+flavor = "That was a long one! Time for the quick and amazing  finale!!"
 
 [node name="music" type="AudioStreamPlayer" parent="." groups=["GameMusic"]]
 stream = ExtResource("15_faxco")

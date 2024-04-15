@@ -307,6 +307,7 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("7_78mai")]
 visible = false
 level_index = 2
+flavor = "Skeletons are OP aren't they?"
 
 [node name="DeathZone" parent="." instance=ExtResource("13_ibby0")]
 position = Vector2(39, 337)

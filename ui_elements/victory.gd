@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var level_index = 0
+@export var flavor = ""
 var last_level = 4
 
 var levels = [
@@ -11,7 +12,8 @@ var levels = [
 ]
 
 func _ready():
-	pass
+	%complete.text = "Levels Complete: %d/4" % level_index
+	%flavor.text = flavor
 
 
 func _process(_delta):

@@ -2,6 +2,9 @@ extends CanvasLayer
 	
 func _ready():
 	Globals.player_room_number = 0
+	%necro.play("attack_loop")
+	%form.play("walking")
+	%enemy.play("attack")
 	await get_tree().create_timer(1,false).timeout
 	%music.play()
 

@@ -230,19 +230,3 @@ level_index = 4
 stream = ExtResource("12_xnrfj")
 volume_db = -10.0
 autoplay = true
-
-[connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809236" to="Traps/@Area2D@809236" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809237" to="Traps/@Area2D@809237" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809238" to="Traps/@Area2D@809238" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809239" to="Traps/@Area2D@809239" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809240" to="Traps/@Area2D@809240" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809241" to="Traps/@Area2D@809241" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809242" to="Traps/@Area2D@809242" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809243" to="Traps/@Area2D@809243" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809244" to="Traps/@Area2D@809244" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809245" to="Traps/@Area2D@809245" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809246" to="Traps/@Area2D@809246" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809247" to="Traps/@Area2D@809247" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809248" to="Traps/@Area2D@809248" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@809249" to="Traps/@Area2D@809249" method="_on_body_entered"]

@@ -12,33 +12,69 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.654902, 0, 1)
+color = Color(0.337255, 0, 0.329412, 1)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.417
-anchor_top = 0.296
-anchor_right = 0.596
-anchor_bottom = 0.403
-offset_left = -0.384033
-offset_top = 0.192001
-offset_right = 0.407959
-offset_bottom = -0.144012
+anchor_left = 0.236
+anchor_top = 0.086
+anchor_right = 0.764
+anchor_bottom = 0.364
+offset_left = 0.127991
+offset_top = 0.271999
+offset_right = -0.128052
+offset_bottom = 0.127991
+theme_override_fonts/font = ExtResource("2_114a0")
+theme_override_font_sizes/font_size = 150
+text = "VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="complete" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.346
+anchor_right = 0.755
+anchor_bottom = 0.469
+offset_left = 0.0639954
+offset_top = 7.79199
+offset_right = 0.239929
+offset_bottom = 0.0879822
 theme_override_fonts/font = ExtResource("2_114a0")
 theme_override_font_sizes/font_size = 50
-text = "VICTORY"
+text = "LEVELS COMPLETE: 0/4"
+horizontal_alignment = 1
+
+[node name="flavor" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.457
+anchor_right = 0.755
+anchor_bottom = 0.568
+offset_left = 0.0639954
+offset_top = -0.136017
+offset_right = 0.239929
+offset_bottom = -0.0640259
+theme_override_fonts/font = ExtResource("2_114a0")
+theme_override_font_sizes/font_size = 30
+text = "CONGRATS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="next" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.458
-anchor_top = 0.481
-anchor_right = 0.542
-anchor_bottom = 0.519
-offset_left = 0.383972
-offset_top = 0.311981
-offset_right = 1.61597
-offset_bottom = 6.68796
+anchor_left = 0.396
+anchor_top = 0.691
+anchor_right = 0.59
+anchor_bottom = 0.779
+offset_left = -0.192017
+offset_top = 0.231964
+offset_right = 6.31995
+offset_bottom = 0.207977
 theme_override_fonts/font = ExtResource("2_114a0")
+theme_override_font_sizes/font_size = 40
 text = "NEXT LEVEL
 "
 
