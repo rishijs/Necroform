@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn0x3h2gdwsfo"]
+[gd_scene load_steps=3 format=3 uid="uid://bn0x3h2gdwsfo"]
 
 [ext_resource type="Script" path="res://levels/ending.gd" id="1_ufrdt"]
+[ext_resource type="FontFile" uid="uid://di55mppiriwju" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="2_qjmqo"]
 
 [node name="Ending" type="CanvasLayer"]
 script = ExtResource("1_ufrdt")
@@ -23,6 +24,7 @@ offset_left = -0.280029
 offset_top = -2.808
 offset_right = -0.328003
 offset_bottom = 0.0959778
+theme_override_fonts/font = ExtResource("2_qjmqo")
 theme_override_font_sizes/font_size = 50
 text = "THANKS FOR PLAYING!"
 
@@ -36,6 +38,7 @@ offset_left = 0.383972
 offset_top = 0.311981
 offset_right = -0.447998
 offset_bottom = 0.207977
+theme_override_fonts/font = ExtResource("2_qjmqo")
 text = "MAIN MENU
 "
 
