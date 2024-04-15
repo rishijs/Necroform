@@ -158,11 +158,4 @@ victory_screen = NodePath("../Victory")
 
 [node name="Victory" parent="." instance=ExtResource("12_hrfpl")]
 visible = false
-
-[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80033" to="Traps/@Area2D@80033" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80034" to="Traps/@Area2D@80034" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80035" to="Traps/@Area2D@80035" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80036" to="Traps/@Area2D@80036" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80037" to="Traps/@Area2D@80037" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@80038" to="Traps/@Area2D@80038" method="_on_body_entered"]
+level_index = 1

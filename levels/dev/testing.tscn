@@ -1,7 +1,5 @@
 [gd_scene load_steps=23 format=3 uid="uid://bxwh5063baalu"]
 
-[ext_resource type="TileSet" uid="uid://btfuuq8hum54o" path="res://levels/traps.tres" id="1_gykn3"]
-[ext_resource type="TileSet" uid="uid://ojskt8hhtxiy" path="res://levels/levels.tres" id="2_d1vbj"]
 [ext_resource type="PackedScene" uid="uid://dax3f1xqn4kxh" path="res://necromancer/necromancer.tscn" id="2_xqkux"]
 [ext_resource type="PackedScene" uid="uid://cv6ylubngu6vt" path="res://traps/lasernode.tscn" id="5_prvqu"]
 [ext_resource type="PackedScene" uid="uid://crrb2u2b2ji88" path="res://camera_system/room_switch.tscn" id="6_eb01g"]
@@ -21,6 +19,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0.129584, 0.000223507, 0.255083, 1)
 gradient = SubResource("Gradient_lob4w")
 fill_from = Vector2(1, 0.940367)
 
+[sub_resource type="TileSet" id="TileSet_27s6t"]
+tile_size = Vector2i(64, 64)
+
 [sub_resource type="Gradient" id="Gradient_qbxt3"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
@@ -39,6 +40,10 @@ size = Vector2(106.606, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyal4"]
 size = Vector2(3.37389, 651)
 
+[sub_resource type="TileSet" id="TileSet_x0oq5"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+
 [sub_resource type="TileSet" id="TileSet_bwf4h"]
 
 [node name="Testing" type="Node2D"]
@@ -50,7 +55,7 @@ texture = SubResource("GradientTexture2D_yc331")
 
 [node name="Traps" type="TileMap" parent="."]
 position = Vector2(-2, 2)
-tile_set = ExtResource("1_gykn3")
+tile_set = SubResource("TileSet_27s6t")
 format = 2
 layer_0/tile_data = PackedInt32Array(262142, 0, 196608, 262151, 0, 262144, 262147, 0, 327680, 196610, 0, 65536, 196609, 0, 65536)
 
@@ -128,7 +133,7 @@ position = Vector2(76.2842, -302.82)
 shape = SubResource("RectangleShape2D_qyal4")
 
 [node name="Level" type="TileMap" parent="."]
-tile_set = ExtResource("2_d1vbj")
+tile_set = SubResource("TileSet_x0oq5")
 format = 2
 layer_0/tile_data = PackedInt32Array(262151, 4, 1, 262152, 65540, 0, 262153, 65540, 2, 262154, 65540, 0, 262155, 65540, 0, 262156, 131076, 2, 262157, 65540, 0, 262158, 65540, 0, 262159, 131076, 3, 262160, 4, 2, 262161, 131076, 2, 262162, 65540, 0, 262163, 65540, 0, 262164, 131076, 2, 327672, 65540, 0, 327673, 65540, 0, 327674, 4, 2, 327675, 65540, 0, 327676, 131076, 3, 327677, 65540, 0, 327678, 4, 3, 327679, 131076, 2, 262144, 65540, 0, 262145, 65540, 3, 262146, 65540, 3, 262147, 65540, 1, 327671, 196612, 1, 262135, 196612, 0, 196599, 196612, 0, 131063, 196612, 0, 65527, 196612, 0, -9, 196612, 0, -65545, 196612, 0, -131081, 196612, 0, -196617, 196612, 0, -262153, 131076, 1, -262152, 65540, 0, -262151, 131076, 2, -262150, 65540, 0, -262149, 131076, 3, -262148, 65540, 0, -262147, 131076, 2, -262146, 65540, 0, -262145, 65540, 0, -327680, 131076, 2, -327679, 65540, 0, -327678, 65540, 0, -327677, 131076, 3, -327676, 65540, 0, -327675, 131076, 2, -327674, 65540, 0, -327673, 65540, 0, -327672, 65540, 0, -327671, 65540, 0, -327670, 131076, 3, -327669, 65540, 0, -327668, 131076, 2, -327667, 65540, 0, -327666, 65540, 0, -327665, 65540, 0, -327664, 131076, 3, -327663, 131076, 2, -327662, 65540, 0, -327661, 65540, 0, -327660, 131076, 3, -327659, 196612, 2, -262123, 196612, 0, -196587, 196612, 0, -131051, 196612, 0, -65515, 196612, 0, 21, 196612, 0, 65557, 196612, 0, 131093, 196612, 0, 196629, 196612, 0, 262165, 131076, 0)
 

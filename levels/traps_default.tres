@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://ckruwjknde83g"]
+
+[ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_w7xmr"]
+[ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_6wgtk"]
+[ext_resource type="PackedScene" uid="uid://rq7ix38g1h57" path="res://traps/leftspike.tscn" id="3_qf7rg"]
+[ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_ixtk3"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_643ka"]
+scenes/1/scene = ExtResource("1_w7xmr")
+scenes/3/scene = ExtResource("2_6wgtk")
+scenes/4/scene = ExtResource("3_qf7rg")
+scenes/5/scene = ExtResource("4_ixtk3")
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_643ka")
