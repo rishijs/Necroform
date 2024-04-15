@@ -4,6 +4,7 @@ extends CanvasLayer
 
 @export_category("refs")
 @export var awaken:ColorRect
+@export var noise:ColorRect
 
 func _input(_event):
 	if Input.is_action_just_pressed("awaken"):
@@ -17,4 +18,8 @@ func _ready():
 
 
 func _process(_delta):
+	#if abs(player_ref.velocity.x) > 0:
+	#	noise.material.set_shader_parameter("speed",0.1)
+	#else:
+	#	noise.material.set_shader_parameter("speed",0.01)
 	pass

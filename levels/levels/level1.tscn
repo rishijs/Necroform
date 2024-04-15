@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://f1ldlpd071h5"]
+[gd_scene load_steps=18 format=3 uid="uid://f1ldlpd071h5"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_x7a81"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_gm6ob"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rq7ix38g1h57" path="res://traps/leftspike.tscn" id="3_x4kfg"]
 [ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_30dug"]
 [ext_resource type="PackedScene" uid="uid://dax3f1xqn4kxh" path="res://necromancer/necromancer.tscn" id="7_1dimv"]
+[ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="11_bbwb8"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="12_hrfpl"]
 [ext_resource type="PackedScene" uid="uid://cet8w02k5cq6a" path="res://camera_system/end_level.tscn" id="12_lkvyk"]
 [ext_resource type="PackedScene" uid="uid://bdcsqxgsgonmy" path="res://ui_elements/interface.tscn" id="13_eotj0"]
@@ -159,3 +160,13 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("12_hrfpl")]
 visible = false
 level_index = 1
+
+[node name="DeathZone" parent="." instance=ExtResource("11_bbwb8")]
+
+[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240095" to="Traps/@Area2D@240095" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240096" to="Traps/@Area2D@240096" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240097" to="Traps/@Area2D@240097" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240098" to="Traps/@Area2D@240098" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240099" to="Traps/@Area2D@240099" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@240100" to="Traps/@Area2D@240100" method="_on_body_entered"]

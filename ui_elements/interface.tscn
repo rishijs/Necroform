@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdcsqxgsgonmy"]
+[gd_scene load_steps=8 format=3 uid="uid://bdcsqxgsgonmy"]
 
 [ext_resource type="Script" path="res://ui_elements/interface.gd" id="1_4bl0m"]
 [ext_resource type="Texture2D" uid="uid://308ylys0b25" path="res://art/ui_elements/frame_minimal_topless.png" id="2_2b16g"]
 [ext_resource type="Texture2D" uid="uid://pc1idqg5vn0f" path="res://art/ui_elements/health.png" id="2_ktlb1"]
 [ext_resource type="Texture2D" uid="uid://c88lvfkh08y7u" path="res://art/ui_elements/mana.png" id="3_quu86"]
+[ext_resource type="Texture2D" uid="uid://34ur0nsle88x" path="res://art/ui_elements/Restart.png" id="5_b07p1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4v3y"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.611765)
@@ -47,7 +48,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_u4v3y")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ifuvo")
 max_value = 10.0
 step = 1.0
-value = 5.0
+value = 10.0
 show_percentage = false
 
 [node name="health1" type="TextureRect" parent="."]
@@ -182,4 +183,32 @@ stretch_mode = 4
 wait_time = 0.1
 autostart = true
 
+[node name="restart" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.924
+anchor_right = 0.958
+anchor_bottom = 0.073
+offset_left = -0.447998
+offset_top = 7.0
+offset_right = 0.383911
+offset_bottom = -0.304005
+texture_normal = ExtResource("5_b07p1")
+texture_pressed = ExtResource("5_b07p1")
+texture_hover = ExtResource("5_b07p1")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="restart_label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.942
+anchor_top = 0.054
+anchor_right = 0.952
+anchor_bottom = 0.09
+offset_left = -0.184082
+offset_top = 0.00799942
+offset_right = 0.296021
+offset_bottom = -0.320004
+text = "u"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

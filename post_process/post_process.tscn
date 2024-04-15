@@ -16,11 +16,13 @@ noise = SubResource("FastNoiseLite_xa3c4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8se1"]
 shader = ExtResource("3_ufioc")
+shader_parameter/speed = 0.04
 shader_parameter/noise = SubResource("NoiseTexture2D_54c8q")
 
-[node name="post_process" type="CanvasLayer" node_paths=PackedStringArray("awaken")]
+[node name="post_process" type="CanvasLayer" node_paths=PackedStringArray("awaken", "noise")]
 script = ExtResource("1_7pm34")
 awaken = NodePath("Awaken")
+noise = NodePath("fog")
 
 [node name="Awaken" type="ColorRect" parent="."]
 visible = false

@@ -8,8 +8,12 @@ extends CanvasLayer
 @export var mana:HBoxContainer
 @export var mana_progress:ProgressBar
 
+func _input(_event):
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+	
 func _ready():
-	pass
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func _process(_delta):
@@ -31,3 +35,7 @@ func _on_timer_timeout():
 			mana.get_child(i).show()
 		else:
 			mana.get_child(i).hide()
+
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene()

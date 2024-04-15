@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu3e2mxxe60qh"]
+[gd_scene load_steps=20 format=3 uid="uid://cu3e2mxxe60qh"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_ouhi3"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_yxjbc"]
@@ -9,10 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bypwyltio6lsa" path="res://art/tileset/tilemapt_necrolines.png" id="5_aylxm"]
 [ext_resource type="PackedScene" uid="uid://bdcsqxgsgonmy" path="res://ui_elements/interface.tscn" id="5_ht8ju"]
 [ext_resource type="PackedScene" uid="uid://dt55p75551jkr" path="res://post_process/post_process.tscn" id="6_4n0ct"]
+[ext_resource type="PackedScene" uid="uid://crrb2u2b2ji88" path="res://camera_system/room_switch.tscn" id="6_wlx1u"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="7_78mai"]
+[ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="7_r0ncs"]
+[ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="13_ibby0"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
-colors = PackedColorArray(0.400173, 0.00201225, 0.731256, 1, 0.129584, 0.000223507, 0.255083, 1)
+colors = PackedColorArray(0.580392, 0.00392157, 0.729412, 1, 0.129584, 0.000223507, 0.255083, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dp42f"]
 gradient = SubResource("Gradient_iun2b")
@@ -105,8 +108,8 @@ sources/4 = SubResource("TileSetAtlasSource_ycndb")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(-0.500397, 1.5)
-scale = Vector2(17.9531, 10.1719)
+position = Vector2(1060.5, -386.5)
+scale = Vector2(51.1094, 22.2969)
 texture = SubResource("GradientTexture2D_dp42f")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -126,18 +129,84 @@ format = 2
 [node name="Level" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_kokad")
 format = 2
-layer_0/tile_data = PackedInt32Array(327672, 196612, 3, 327673, 196612, 3, 327674, 196612, 3, 327675, 196612, 3, 327676, 196612, 3, 327677, 196612, 3, 327678, 196612, 3, 327679, 196612, 3, 262144, 196612, 3, 262145, 196612, 3, 262146, 196612, 3, 262147, 196612, 3, 327671, 196612, 3, 262135, 196612, 3, 196599, 196612, 3, 131063, 196612, 3, 65527, 196612, 3, -9, 196612, 3, -65545, 196612, 3, -131081, 196612, 3, -196617, 196612, 3, -262153, 196612, 3, -262152, 196612, 3, -262151, 196612, 3, -262150, 196612, 3, -262149, 196612, 3, -262148, 196612, 3, -262147, 196612, 3, -262146, 196612, 3, -262145, 196612, 3, -327680, 196612, 3, -327679, 196612, 3, -327678, 196612, 3, -327673, 196612, 3, -327674, 196612, 3, -327675, 196612, 3, -327676, 196612, 3, -327677, 196612, 3, 262148, 196612, 3, 262149, 196612, 3, 262150, 196612, 3, 262151, 196612, 3, -327672, 196612, 3, 262152, 196612, 3, 196616, 196612, 3, 131080, 196612, 3, 65544, 196612, 3, 8, 196612, 3, -65528, 196612, 3, -131064, 196612, 3, -196600, 196612, 3, -262136, 196612, 3, -196616, 131076, 1, -196615, 65540, 0, -196614, 65540, 0, -196613, 65540, 0, -196612, 65540, 0, -196611, 65540, 0, -196610, 65540, 0, -196609, 65540, 0, -262144, 65540, 0, -262143, 65540, 0, -262142, 65540, 0, -262141, 65540, 0, -262140, 65540, 0, -262139, 65540, 0, -262138, 65540, 0, -262137, 196612, 2, -196601, 196612, 0, -131065, 196612, 0, -65529, 196612, 0, 7, 196612, 0, 65543, 196612, 0, 131079, 196612, 0, 196615, 131076, 0, 196614, 65540, 0, 196613, 65540, 0, 196612, 65540, 0, 196611, 65540, 0, 196610, 65540, 0, 196609, 65540, 0, 196608, 65540, 0, 262143, 65540, 0, 262142, 65540, 0, 262141, 65540, 0, 262140, 65540, 0, 262139, 65540, 0, 262138, 65540, 0, 262137, 65540, 0, 262136, 196612, 1, 196600, 196612, 0, 131064, 196612, 0, 65528, 196612, 0, -8, 196612, 0, -65544, 196612, 0, -131080, 196612, 0, -393212, 196612, 3, -393213, 196612, 3, -393216, 196612, 3, -327681, 196612, 3, -327682, 196612, 3, -327683, 196612, 3, -327684, 196612, 3, -327685, 196612, 3, -327686, 196612, 3)
+layer_0/tile_data = PackedInt32Array(327672, 196612, 3, 327673, 196612, 3, 327674, 196612, 3, 327675, 196612, 3, 327676, 196612, 3, 327677, 196612, 3, 327678, 196612, 3, 327679, 196612, 3, 262144, 196612, 3, 262145, 196612, 3, 262146, 196612, 3, 262147, 196612, 3, 327671, 196612, 3, 262135, 196612, 3, 196599, 196612, 3, 131063, 196612, 3, 65527, 196612, 3, -9, 196612, 3, -65545, 196612, 3, -131081, 196612, 3, -196617, 196612, 3, -262153, 196612, 3, -262152, 196612, 3, -262151, 196612, 3, -262150, 196612, 3, -262149, 196612, 3, -262148, 196612, 3, -262147, 196612, 3, -262146, 196612, 3, -262145, 196612, 3, -327680, 196612, 3, -327679, 196612, 3, -327678, 196612, 3, -327673, 196612, 0, -327674, 196612, 3, -327675, 196612, 3, -327676, 196612, 3, -327677, 196612, 3, 262148, 196612, 3, 262149, 196612, 3, 262150, 196612, 3, 262151, 196612, 3, -327672, 196612, 3, 262152, 196612, 3, 196616, 65540, 0, 131080, 196612, 3, 65544, 196612, 3, 8, 196612, 3, -65528, 196612, 3, -131064, 196612, 3, -196600, 196612, 3, -262136, 196612, 3, -196616, 131076, 1, -196615, 65540, 0, -196614, 65540, 0, -196613, 65540, 0, -196612, 65540, 0, -196611, 65540, 0, -196610, 65540, 0, -196609, 65540, 0, -262144, 65540, 0, -262143, 65540, 0, -262142, 65540, 0, -262141, 65540, 0, -262140, 65540, 0, -262139, 65540, 0, -262138, 65540, 0, -262137, 131076, 0, -196601, 196612, 3, -131065, 196612, 3, -65529, 196612, 3, 7, 196612, 3, 65543, 196612, 3, 131079, 196612, 3, 196615, 65540, 0, 196614, 65540, 0, 196613, 65540, 0, 196612, 65540, 0, 196611, 65540, 0, 196610, 65540, 0, 196609, 65540, 0, 196608, 65540, 0, 262143, 65540, 0, 262142, 65540, 0, 262141, 65540, 0, 262140, 65540, 0, 262139, 65540, 0, 262138, 65540, 0, 262137, 65540, 0, 262136, 196612, 1, 196600, 196612, 0, 131064, 196612, 0, 65528, 196612, 0, -8, 196612, 0, -65544, 196612, 0, -131080, 196612, 0, -393212, 196612, 3, -393213, 196612, 3, -393216, 196612, 3, -327681, 196612, 3, -327682, 196612, 3, -327683, 196612, 3, -327684, 196612, 3, -327685, 196612, 3, -327686, 196612, 3, -393209, 196612, 0, -458745, 196612, 0, 196617, 65540, 0, 196618, 65540, 0, 196619, 65540, 0, 196620, 65540, 0, 196621, 131076, 0, 196622, 196612, 3, 196623, 196612, 3, 196624, 196612, 3, 131085, 196612, 0, 65549, 196612, 0, 13, 196612, 0, -65523, 196612, 0, -131059, 196612, 0, -196595, 196612, 0, -262131, 196612, 0, -327667, 196612, 0, -393203, 131076, 1, -524281, 196612, 0, -589817, 196612, 0, -655353, 196612, 0, -720889, 196612, 0, -786425, 196612, 0, -851954, 65540, 0, -851955, 65540, 0, -851956, 65540, 0, -851957, 65540, 0, -851958, 65540, 0, -851959, 65540, 0, -851960, 65540, 0, -851961, 131076, 1, -393202, 65540, 0, -393201, 65540, 0, -393200, 65540, 0, -393199, 65540, 0, -393198, 65540, 0, -393197, 65540, 0, -851953, 65540, 0, -851952, 65540, 0, -851951, 65540, 0, -851950, 65540, 0, -851949, 65540, 0, -851948, 65540, 0, -393196, 65540, 0, -393195, 65540, 0, -393194, 65540, 0, -851947, 65540, 0, -851946, 65540, 0, -851945, 65540, 0, -393193, 196612, 2, -851944, 65540, 0, -851943, 65540, 0, -851942, 65540, 0, -851941, 65540, 0, -851940, 65540, 0, -851939, 196612, 2, -851938, 196612, 3, -851937, 196612, 3, -786401, 196612, 3, -720865, 196612, 3, -655329, 196612, 3, -589793, 196612, 3, -524257, 196612, 3, -458721, 196612, 3, -393185, 196612, 3, -327657, 196612, 0, -262121, 196612, 0, -327649, 196612, 3, -262113, 65540, 0, -196585, 196612, 0, -131049, 196612, 0, -65513, 196612, 0, 23, 196612, 0, 65559, 196612, 0, 131095, 196612, 0, 196631, 196612, 1, -262112, 65540, 0, -262111, 65540, 0, -262110, 65540, 0, -262109, 65540, 0, -262108, 65540, 0, -262107, 65540, 0, -262106, 65540, 0, -262105, 65540, 0, 196632, 65540, 0, 196633, 65540, 0, 196634, 65540, 0, 196635, 65540, 0, 196636, 65540, 0, 196637, 65540, 0, 196638, 65540, 0, 196639, 65540, 0, 196640, 65540, 0, 196641, 65540, 0, 196642, 65540, 0, 196643, 65540, 0, 196644, 65540, 0, 196645, 65540, 0, 196646, 65540, 0, 196647, 65540, 0, -262104, 196612, 2, 196648, 131076, 0, 131112, 196612, 0, 65576, 196612, 0, 40, 196612, 0, -65496, 196612, 0, -131032, 196612, 0, -196568, 196612, 0, -262115, 196612, 1, -327651, 196612, 0, -393187, 196612, 0, -458723, 196612, 0, -524259, 196612, 0, -589795, 196612, 0, -655331, 196612, 0, -720867, 196612, 0, -786403, 196612, 0, -262114, 65540, 0)
 
 [node name="CameraManager" type="Node2D" parent="." groups=["CameraManager"]]
 
 [node name="Camera2D" type="Camera2D" parent="CameraManager"]
 
+[node name="Camera2D2" type="Camera2D" parent="CameraManager"]
+position = Vector2(570, -5)
+zoom = Vector2(1.005, 1.005)
+
+[node name="Camera2D3" type="Camera2D" parent="CameraManager"]
+position = Vector2(958, -491)
+zoom = Vector2(1.005, 1.005)
+
+[node name="Camera2D4" type="Camera2D" parent="CameraManager"]
+position = Vector2(1410, -491)
+zoom = Vector2(1.005, 1.005)
+
+[node name="Camera2D5" type="Camera2D" parent="CameraManager"]
+position = Vector2(2054, -9)
+zoom = Vector2(1.005, 1.005)
+
 [node name="RoomManager" type="Node2D" parent="." groups=["RoomManager"]]
+
+[node name="RoomSwitch" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(518, 5)
+
+[node name="RoomSwitch2" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(593, 4)
+room_number = 1
+
+[node name="RoomSwitch3" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(690, -300)
+rotation = -1.5708
+room_number = 1
+
+[node name="RoomSwitch4" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(698, -376)
+rotation = -1.5708
+room_number = 2
+
+[node name="RoomSwitch7" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(1434, -580)
+room_number = 2
+
+[node name="RoomSwitch8" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(1509, -581)
+room_number = 3
+
+[node name="RoomSwitch6" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(1732, -237)
+rotation = -1.5708
+room_number = 3
+
+[node name="RoomSwitch5" parent="RoomManager" instance=ExtResource("6_wlx1u")]
+position = Vector2(1724, -161)
+rotation = -1.5708
+room_number = 4
 
 [node name="RoomOrigins" type="Node2D" parent="." groups=["RoomOrigins"]]
 
 [node name="0" type="Marker2D" parent="RoomOrigins"]
 position = Vector2(-359, 179)
+
+[node name="1" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(585, 179)
+
+[node name="2" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(864, -390)
+
+[node name="3" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(1486, -390)
+
+[node name="4" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(1858, 185)
+
+[node name="5" type="Marker2D" parent="RoomOrigins"]
+position = Vector2(1858, 185)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -147,8 +216,36 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Platforms" type="Node2D" parent="."]
 
+[node name="Platform_default1" type="Node2D" parent="Platforms"]
+
+[node name="bottom" type="Marker2D" parent="Platforms/Platform_default1"]
+position = Vector2(717, 183)
+
+[node name="top" type="Marker2D" parent="Platforms/Platform_default1"]
+position = Vector2(717, -352)
+
+[node name="Platform" parent="Platforms/Platform_default1" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_r0ncs")]
+position = Vector2(716, 179)
+bottom = NodePath("../bottom")
+top = NodePath("../top")
+
+[node name="Platform_default2" type="Node2D" parent="Platforms"]
+position = Vector2(1831, -85)
+
+[node name="top" type="Marker2D" parent="Platforms/Platform_default2"]
+position = Vector2(-145, -292)
+
+[node name="bottom" type="Marker2D" parent="Platforms/Platform_default2"]
+position = Vector2(-165, 244)
+
+[node name="Platform" parent="Platforms/Platform_default2" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_r0ncs")]
+position = Vector2(-165, -286)
+bottom_start = false
+bottom = NodePath("../bottom")
+top = NodePath("../top")
+
 [node name="EndLevel" parent="." node_paths=PackedStringArray("victory_screen") instance=ExtResource("4_my424")]
-position = Vector2(431, 4)
+position = Vector2(2543, -3)
 victory_screen = NodePath("../Victory")
 
 [node name="Interface" parent="." instance=ExtResource("5_ht8ju")]
@@ -158,3 +255,9 @@ victory_screen = NodePath("../Victory")
 [node name="Victory" parent="." instance=ExtResource("7_78mai")]
 visible = false
 level_index = 2
+
+[node name="DeathZone" parent="." instance=ExtResource("13_ibby0")]
+position = Vector2(39, 337)
+
+[node name="DeathZone2" parent="." instance=ExtResource("13_ibby0")]
+position = Vector2(2011, 337)
