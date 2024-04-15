@@ -8,7 +8,7 @@ var max_health = 4
 var health = 2
 var dmg = 0
 var speed = 150.0
-var jump_vel = -500.0
+var jump_vel = -400.0
 var base_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = base_gravity
 
