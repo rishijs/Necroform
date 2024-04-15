@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui_elements/main_menu.gd" id="1_6mc7n"]
 [ext_resource type="AudioStream" uid="uid://djqyj1kbybt0w" path="res://audio/music/NecromancerMenu.ogg" id="2_5t2n0"]
-[ext_resource type="FontFile" uid="uid://di55mppiriwju" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="2_v4sie"]
+[ext_resource type="FontFile" uid="uid://bn1e0kb6k1h2y" path="res://fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="2_rys0r"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_6mc7n")
@@ -25,7 +25,7 @@ offset_left = 0.167969
 offset_top = 2.192
 offset_right = 0.00799561
 offset_bottom = -0.0880127
-theme_override_fonts/font = ExtResource("2_v4sie")
+theme_override_fonts/font = ExtResource("2_rys0r")
 theme_override_font_sizes/font_size = 50
 text = "NECROMANCER"
 
@@ -39,7 +39,7 @@ offset_left = 0.383972
 offset_top = 0.311981
 offset_right = 1.61597
 offset_bottom = 6.68796
-theme_override_fonts/font = ExtResource("2_v4sie")
+theme_override_fonts/font = ExtResource("2_rys0r")
 text = "PLAY
 "
 

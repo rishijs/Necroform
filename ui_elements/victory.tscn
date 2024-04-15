@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://66oc6516sts3"]
+[gd_scene load_steps=3 format=3 uid="uid://66oc6516sts3"]
 
 [ext_resource type="Script" path="res://ui_elements/victory.gd" id="1_ojtpw"]
+[ext_resource type="FontFile" uid="uid://bn1e0kb6k1h2y" path="res://fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="2_114a0"]
 
 [node name="Victory" type="CanvasLayer"]
 script = ExtResource("1_ojtpw")
@@ -23,6 +24,7 @@ offset_left = -0.384033
 offset_top = 0.192001
 offset_right = 0.407959
 offset_bottom = -0.144012
+theme_override_fonts/font = ExtResource("2_114a0")
 theme_override_font_sizes/font_size = 50
 text = "VICTORY"
 
@@ -36,6 +38,7 @@ offset_left = 0.383972
 offset_top = 0.311981
 offset_right = 1.61597
 offset_bottom = 6.68796
+theme_override_fonts/font = ExtResource("2_114a0")
 text = "NEXT LEVEL
 "
 
