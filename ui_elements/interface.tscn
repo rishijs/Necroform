@@ -209,6 +209,7 @@ offset_left = -0.184082
 offset_top = 0.00799942
 offset_right = 0.296021
 offset_bottom = -0.320004
+theme_override_fonts/font = ExtResource("7_3tkhk")
 text = "u"
 
 [node name="hint" type="MarginContainer" parent="."]

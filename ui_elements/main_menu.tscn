@@ -19,6 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.254902, 0, 0.431373, 1)
 
+[node name="PostProcess" parent="." instance=ExtResource("7_wgiwp")]
+
 [node name="Label" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.208
@@ -74,9 +76,5 @@ position = Vector2(1007, 493)
 sprite_frames = ExtResource("6_sslrw")
 animation = &"attack"
 flip_h = true
-
-[node name="PostProcess" parent="." node_paths=PackedStringArray("awaken", "noise") instance=ExtResource("7_wgiwp")]
-awaken = NodePath("")
-noise = NodePath("")
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

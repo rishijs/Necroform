@@ -13,11 +13,16 @@ config_version=5
 config/name="Necromancer"
 run/main_scene="res://ui_elements/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://art/skeleton/skeleton_mangled.png"
 
 [autoload]
 
 Globals="*res://autoload/globals.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [input]
 
