@@ -39,14 +39,14 @@ var darkstar_awaken_cost = 7
 var room = 0
 
 @export_category("ref")
-@export var sprite:Sprite2D
+@export var sprite:AnimatedSprite2D
 @export var spawn_l:Marker2D
 @export var spawn_r:Marker2D
-@export var summon_timer:Timer
 
 func _ready():
 	room = Globals.player_room_number
 	global_position = room_origins_ref.get_child(room).global_position
+	sprite.play("idle")
 
 func _input(_event):
 	if not rooted:
@@ -67,10 +67,10 @@ func _input(_event):
 					mana -= darkstar_cost
 		if Input.is_action_just_pressed("left"):
 			dir = dirs.LEFT
-			sprite.flip_h = true
+			sprite.flip_h = false
 		if Input.is_action_just_pressed("right"):
 			dir = dirs.RIGHT
-			sprite.flip_h = false
+			sprite.flip_h = true
 	if Input.is_action_just_pressed("awaken"):
 		if awaken == true:
 			awaken = false

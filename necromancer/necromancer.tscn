@@ -1,35 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dax3f1xqn4kxh"]
+[gd_scene load_steps=4 format=3 uid="uid://dax3f1xqn4kxh"]
 
 [ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_erpu1"]
-
-[sub_resource type="Gradient" id="Gradient_nxwie"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6rjlu"]
-gradient = SubResource("Gradient_nxwie")
+[ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="2_p30ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
-size = Vector2(64, 64)
+size = Vector2(41, 102)
 
 [node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spawn_l", "spawn_r") groups=["Player"]]
 collision_layer = 2
 collision_mask = 167
 script = ExtResource("1_erpu1")
-sprite = NodePath("Player")
+sprite = NodePath("AnimatedSprite2D")
 spawn_l = NodePath("SpawnL")
 spawn_r = NodePath("SpawnR")
 
-[node name="Player" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_6rjlu")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -20)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_p30ak")
+animation = &"idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -20)
 shape = SubResource("RectangleShape2D_ixjji")
 
 [node name="SpawnL" type="Marker2D" parent="."]
-position = Vector2(-52, 25)
+position = Vector2(-29, 25)
 
 [node name="SpawnR" type="Marker2D" parent="."]
-position = Vector2(54, 25)
+position = Vector2(28, 25)
 
 [node name="ManaRegen" type="Timer" parent="."]
 wait_time = 0.1

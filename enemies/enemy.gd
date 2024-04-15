@@ -19,7 +19,11 @@ signal hit(damage,knockback)
 @export var patrol_range:Area2D
 @export var patrol_left:Marker2D
 @export var patrol_right:Marker2D
+@export var sprite:AnimatedSprite2D
 
+func _ready():
+	sprite.play("walking")
+	
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta

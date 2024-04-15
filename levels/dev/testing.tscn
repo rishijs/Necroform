@@ -255,7 +255,7 @@ patrol_right = NodePath("../PR")
 [node name="PatrolArea" parent="Enemies" instance=ExtResource("8_vygl6")]
 
 [node name="Necromancer" parent="." instance=ExtResource("2_xqkux")]
-position = Vector2(-457, 211)
+position = Vector2(-457, 228)
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -283,6 +283,6 @@ position = Vector2(1355, -27)
 
 [connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@20178" to="Traps/@Area2D@20178" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@20179" to="Traps/@Area2D@20179" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@20180" to="Traps/@Area2D@20180" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@186914" to="Traps/@Area2D@186914" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@186915" to="Traps/@Area2D@186915" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@186916" to="Traps/@Area2D@186916" method="_on_body_entered"]

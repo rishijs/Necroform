@@ -1,36 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm37113yoafs"]
+[gd_scene load_steps=5 format=3 uid="uid://dm37113yoafs"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_g2l3m"]
-
-[sub_resource type="Gradient" id="Gradient_qbu24"]
-colors = PackedColorArray(1, 0, 0, 1, 0.52549, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gvlas"]
-gradient = SubResource("Gradient_qbu24")
-fill_from = Vector2(0.559633, 1)
-fill_to = Vector2(0.555046, 0)
+[ext_resource type="SpriteFrames" uid="uid://cevb2syadovkc" path="res://enemies/enemy_sprite.tres" id="2_mstxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwkjy"]
-size = Vector2(63, 64)
+size = Vector2(62, 111)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di3o2"]
-size = Vector2(159, 41)
+size = Vector2(159, 63)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemy"]]
 script = ExtResource("1_g2l3m")
+sprite = NodePath("AnimatedSprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_gvlas")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -21)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_mstxq")
+animation = &"walking"
+frame_progress = 0.752109
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
+position = Vector2(0, -24.5)
 shape = SubResource("RectangleShape2D_lwkjy")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 135
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 10.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_di3o2")
 
 [connection signal="hit" from="." to="." method="_on_hit"]

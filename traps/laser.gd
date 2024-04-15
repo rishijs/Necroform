@@ -8,7 +8,8 @@ var knockback_strength = 1
 @export_category("refs")
 @export var timer:Timer
 @export var col:CollisionShape2D
-@export var mesh:MeshInstance2D
+@export var warning:Sprite2D
+@export var laser:Sprite2D
 
 func _ready():
 	pass
@@ -26,7 +27,8 @@ func _on_body_entered(body):
 func activate():
 	active = true
 	col.set_deferred("disabled",false)
-	mesh.modulate = Color(1,0,0,1)
+	warning.hide()
+	laser.show()
 	
 	for obj in get_overlapping_bodies():
 		if obj.is_in_group("Player") or obj.is_in_group("Minion"):

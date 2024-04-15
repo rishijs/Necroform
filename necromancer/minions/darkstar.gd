@@ -12,8 +12,12 @@ var speedboost = 1.25
 
 signal hit(damage,knockback)
 
+var awaken_texture = preload("res://art/darkstar/darkstar_awaken.png")
+
 @export_category("refs")
 @export var timer:Timer
+@export var sprite:Sprite2D
+@export var particles:CPUParticles2D
 
 func _ready():
 	player_ref.speed *= speedboost
@@ -28,6 +32,8 @@ func upgrade():
 	scale *= 2
 	player_ref.speed *= 1.2
 	player_ref.health = player_ref.max_health
+	sprite.texture = awaken_texture
+	particles.amount *= 2
 	
 func destruct():
 	player_ref.speed /= speedboost

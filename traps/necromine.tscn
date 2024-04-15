@@ -1,25 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhhv8ppl28fcy"]
+[gd_scene load_steps=4 format=3 uid="uid://bhhv8ppl28fcy"]
 
 [ext_resource type="Script" path="res://traps/necromine.gd" id="1_evbed"]
-
-[sub_resource type="Gradient" id="Gradient_qmc7v"]
-colors = PackedColorArray(0.588235, 0, 0.12549, 1, 1, 0.141176, 0.0470588, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4vyg"]
-gradient = SubResource("Gradient_qmc7v")
+[ext_resource type="Texture2D" uid="uid://cy5j6i681tk1m" path="res://art/traps/mine.png" id="2_mq08t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wrrq"]
 radius = 76.4199
 
 [node name="Necromine" type="Area2D" groups=["Mine"]]
-visible = false
 collision_mask = 135
 script = ExtResource("1_evbed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 8)
 scale = Vector2(0.8, 0.8)
-texture = SubResource("GradientTexture2D_y4vyg")
+texture = ExtResource("2_mq08t")
 
 [node name="trigger" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4wrrq")

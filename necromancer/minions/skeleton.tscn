@@ -1,32 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://ge5l3n7s3m1r"]
+[gd_scene load_steps=5 format=3 uid="uid://ge5l3n7s3m1r"]
 
 [ext_resource type="Script" path="res://necromancer/minions/skeleton.gd" id="1_v5tk1"]
+[ext_resource type="SpriteFrames" uid="uid://dwvbhaohhwb7x" path="res://necromancer/minions/skeleton_sprite.tres" id="2_h35bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iagrw"]
-size = Vector2(30, 30)
-
-[sub_resource type="Gradient" id="Gradient_1ulky"]
-colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0.47788, 0.47788, 0.47788, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_84bas"]
-gradient = SubResource("Gradient_1ulky")
+size = Vector2(20, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldkfm"]
-size = Vector2(60, 17)
+size = Vector2(60, 17.5)
 
-[node name="Skeleton" type="CharacterBody2D" groups=["Minion", "Skeleton"]]
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Minion", "Skeleton"]]
 collision_layer = 36
 collision_mask = 9
 script = ExtResource("1_v5tk1")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_iagrw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(9.53674e-07, 0.999999)
-scale = Vector2(0.5, 0.5)
-texture = SubResource("GradientTexture2D_84bas")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("2_h35bl")
+animation = &"walking"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -36,7 +32,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 8.5)
+position = Vector2(-1, 5.75)
 shape = SubResource("RectangleShape2D_ldkfm")
 
 [connection signal="hit" from="." to="." method="_on_hit"]

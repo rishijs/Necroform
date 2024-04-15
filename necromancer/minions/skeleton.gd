@@ -13,7 +13,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal mount(loc)
 signal hit(damage,knockback)
 
+@export_category("refs")
+@export var sprite:AnimatedSprite2D
+
 func _ready():
+	sprite.play("walking")
 	if awaken:
 		upgrade()
 	
