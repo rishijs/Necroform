@@ -3,8 +3,10 @@ extends CanvasLayer
 @onready var player_ref = get_tree().get_first_node_in_group("Player")
 
 @export_category("refs")
-@export var health:HBoxContainer
+@export var health1:TextureRect
+@export var health2:TextureRect
 @export var mana:HBoxContainer
+@export var mana_progress:ProgressBar
 
 func _ready():
 	pass
@@ -15,11 +17,14 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	for i in range(health.get_children().size()):
-		if i < int(player_ref.health):
-			health.get_child(i).show()
-		else:
-			health.get_child(i).hide()
+	mana_progress.value = floor(player_ref.mana)
+	
+	if int(player_ref.health) == 1:
+		health1.show()
+		health2.hide()
+	elif int(player_ref.health) == 2:
+		health1.show()
+		health2.show()
 
 	for i in range(mana.get_children().size()):
 		if i < int(player_ref.mana):

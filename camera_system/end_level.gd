@@ -1,5 +1,7 @@
 extends Area2D
 
+@export_category("refs")
+@export var victory_screen:CanvasLayer
 
 func _ready():
 	pass
@@ -11,4 +13,4 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		get_tree().change_scene_to_file("res://ui_elements/victory.tscn")
+		victory_screen.show()

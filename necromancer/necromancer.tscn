@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dax3f1xqn4kxh"]
+[gd_scene load_steps=6 format=3 uid="uid://dax3f1xqn4kxh"]
 
 [ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_erpu1"]
 [ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="2_p30ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixjji"]
 size = Vector2(41, 102)
+
+[sub_resource type="Gradient" id="Gradient_d8idv"]
+offsets = PackedFloat32Array(0.0194805, 0.75974, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.219776, 0.219776, 0.219776, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aj81o"]
+gradient = SubResource("Gradient_d8idv")
+fill = 1
+fill_from = Vector2(0.490826, 0.495413)
+fill_to = Vector2(0.862385, 0.238532)
 
 [node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spawn_l", "spawn_r") groups=["Player"]]
 collision_layer = 2
@@ -34,6 +44,11 @@ position = Vector2(28, 25)
 [node name="ManaRegen" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6, -29)
+scale = Vector2(3.36719, 3.41543)
+texture = SubResource("GradientTexture2D_aj81o")
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="ManaRegen" to="." method="_on_mana_regen_timeout"]

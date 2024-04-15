@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt55p75551jkr"]
+[gd_scene load_steps=8 format=3 uid="uid://dt55p75551jkr"]
 
 [ext_resource type="Script" path="res://post_process/post_process.gd" id="1_7pm34"]
 [ext_resource type="Shader" path="res://post_process/awaken.gdshader" id="1_b733w"]
+[ext_resource type="Shader" path="res://post_process/noise.gdshader" id="3_ufioc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7e4bu"]
 shader = ExtResource("1_b733w")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xa3c4"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_54c8q"]
+seamless = true
+noise = SubResource("FastNoiseLite_xa3c4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8se1"]
+shader = ExtResource("3_ufioc")
+shader_parameter/noise = SubResource("NoiseTexture2D_54c8q")
 
 [node name="post_process" type="CanvasLayer" node_paths=PackedStringArray("awaken")]
 script = ExtResource("1_7pm34")
@@ -19,3 +31,11 @@ anchor_bottom = 1.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_g8se1")
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_right = 0.151855
+color = Color(1, 1, 1, 0.176471)

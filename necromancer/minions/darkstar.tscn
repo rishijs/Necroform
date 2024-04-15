@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjojpc6r7lilb" path="res://art/darkstar/darkstar_particle.png" id="3_s57gj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iagrw"]
-size = Vector2(44, 96)
+size = Vector2(44, 148)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0uov"]
 radius = 128.0
@@ -20,12 +20,12 @@ sprite = NodePath("Sprite2D")
 particles = NodePath("particles")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -32)
+position = Vector2(1, -58)
 shape = SubResource("RectangleShape2D_iagrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(0, -64)
+position = Vector2(1, -107)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_s81ah")
 

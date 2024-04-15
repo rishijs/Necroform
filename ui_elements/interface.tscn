@@ -1,63 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdcsqxgsgonmy"]
+[gd_scene load_steps=7 format=3 uid="uid://bdcsqxgsgonmy"]
 
 [ext_resource type="Script" path="res://ui_elements/interface.gd" id="1_4bl0m"]
-[ext_resource type="Texture2D" uid="uid://d4gytnyp6nj5y" path="res://art/ui_elements/frame.png" id="2_g8me0"]
+[ext_resource type="Texture2D" uid="uid://308ylys0b25" path="res://art/ui_elements/frame_minimal_topless.png" id="2_2b16g"]
 [ext_resource type="Texture2D" uid="uid://pc1idqg5vn0f" path="res://art/ui_elements/health.png" id="2_ktlb1"]
 [ext_resource type="Texture2D" uid="uid://c88lvfkh08y7u" path="res://art/ui_elements/mana.png" id="3_quu86"]
 
-[node name="Interface" type="CanvasLayer" node_paths=PackedStringArray("health", "mana")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4v3y"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.611765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifuvo"]
+bg_color = Color(0.533333, 0, 0.6, 0.74902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.682353, 0.301961, 1, 1)
+
+[node name="Interface" type="CanvasLayer" node_paths=PackedStringArray("health1", "health2", "mana", "mana_progress")]
 script = ExtResource("1_4bl0m")
-health = NodePath("Health")
+health1 = NodePath("health1")
+health2 = NodePath("health2")
 mana = NodePath("Margin/VBoxContainer/Mana")
+mana_progress = NodePath("Mana")
 
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.694118)
+[node name="Frame" type="TextureRect" parent="."]
 anchors_preset = -1
-anchor_left = 0.058
-anchor_top = 0.106
-anchor_right = 0.405
-anchor_bottom = 0.281
-offset_left = 7.184
-offset_top = 8.312
-offset_right = 7.43997
-offset_bottom = 7.91199
+anchor_right = 1.008
+anchor_bottom = 0.998
+offset_right = -0.216064
+offset_bottom = 0.295959
+texture = ExtResource("2_2b16g")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Health" type="HBoxContainer" parent="."]
+[node name="Mana" type="ProgressBar" parent="."]
 anchors_preset = -1
-anchor_left = 0.071
-anchor_top = 0.21
-anchor_right = 0.161
-anchor_bottom = 0.295
-offset_left = 0.208
-offset_top = 4.92
-offset_right = 0.527985
-offset_bottom = -0.160004
-size_flags_vertical = 3
+anchor_left = 0.082
+anchor_top = 0.012
+anchor_right = 0.419
+anchor_bottom = 0.069
+offset_left = -0.464005
+offset_top = 0.224008
+offset_right = 0.311951
+offset_bottom = 0.288002
+theme_override_styles/background = SubResource("StyleBoxFlat_u4v3y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ifuvo")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
 
-[node name="health" type="TextureRect" parent="Health"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
+[node name="health1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(70, 70)
+anchors_preset = -1
+anchor_left = 0.842
+anchor_top = -0.015
+anchor_right = 0.903
+anchor_bottom = 0.093
+offset_left = 0.0159302
+offset_top = -0.28
+offset_right = -0.256104
+offset_bottom = -0.264
 texture = ExtResource("2_ktlb1")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="health2" type="TextureRect" parent="Health"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
+[node name="health2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(70, 70)
+anchors_preset = -1
+anchor_left = 0.876
+anchor_top = -0.015
+anchor_right = 0.937
+anchor_bottom = 0.093
+offset_left = -0.152039
+offset_top = -0.28
+offset_right = -0.424072
+offset_bottom = -0.264
 texture = ExtResource("2_ktlb1")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchors_preset = -1
-anchor_left = 0.071
-anchor_top = 0.131
-anchor_right = 0.406
-anchor_bottom = 0.193
-offset_left = 0.208
-offset_top = 0.111992
-offset_right = 0.287964
-offset_bottom = -0.0640106
+anchor_left = 0.084
+anchor_top = 0.012
+anchor_right = 0.419
+anchor_bottom = 0.074
+offset_left = 0.231995
+offset_top = 0.224
+offset_right = 0.311951
+offset_bottom = 0.0480003
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
@@ -67,6 +99,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="mana" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -74,6 +107,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana2" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -81,6 +115,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana3" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -88,6 +123,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana4" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -95,6 +131,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana5" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -102,6 +139,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana6" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -109,6 +147,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana7" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -116,6 +155,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana8" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -123,6 +163,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana9" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -130,6 +171,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="mana10" type="TextureRect" parent="Margin/VBoxContainer/Mana"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 texture = ExtResource("3_quu86")
@@ -139,15 +181,5 @@ stretch_mode = 4
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
-
-[node name="Frame" type="TextureRect" parent="."]
-anchors_preset = -1
-anchor_right = 1.008
-anchor_bottom = 0.998
-offset_right = -0.216064
-offset_bottom = 0.295959
-texture = ExtResource("2_g8me0")
-expand_mode = 1
-stretch_mode = 4
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
