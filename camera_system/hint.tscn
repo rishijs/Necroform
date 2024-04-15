@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://blcsiabjjy72q"]
+
+[ext_resource type="Script" path="res://camera_system/hint.gd" id="1_n2ixt"]
+[ext_resource type="Texture2D" uid="uid://jno5whwyb36o" path="res://art/game_elements/QuestionMarkIcon.png" id="1_w30r1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6g7y"]
+size = Vector2(99, 148)
+
+[node name="Hint" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_n2ixt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_w30r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.5, 0)
+shape = SubResource("RectangleShape2D_l6g7y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

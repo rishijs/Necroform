@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://f1ldlpd071h5"]
+[gd_scene load_steps=20 format=3 uid="uid://f1ldlpd071h5"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_x7a81"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_gm6ob"]
 [ext_resource type="Texture2D" uid="uid://bypwyltio6lsa" path="res://art/tileset/tilemapt_necrolines.png" id="2_m87km"]
 [ext_resource type="PackedScene" uid="uid://rq7ix38g1h57" path="res://traps/leftspike.tscn" id="3_x4kfg"]
 [ext_resource type="PackedScene" uid="uid://dnj10bdcie4mk" path="res://traps/rightspike.tscn" id="4_30dug"]
+[ext_resource type="PackedScene" uid="uid://blcsiabjjy72q" path="res://camera_system/hint.tscn" id="6_h8s2f"]
 [ext_resource type="PackedScene" uid="uid://dax3f1xqn4kxh" path="res://necromancer/necromancer.tscn" id="7_1dimv"]
 [ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="11_bbwb8"]
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="12_hrfpl"]
@@ -140,12 +141,17 @@ layer_0/tile_data = PackedInt32Array(327672, 196612, 3, 327673, 196612, 3, 32767
 [node name="RoomOrigins" type="Node2D" parent="." groups=["RoomOrigins"]]
 
 [node name="0" type="Marker2D" parent="RoomOrigins"]
-position = Vector2(-359, 179)
+position = Vector2(-380, 179)
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="Hint" parent="Hints" instance=ExtResource("6_h8s2f")]
+position = Vector2(-270, 119)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Necromancer" parent="." instance=ExtResource("7_1dimv")]
-position = Vector2(-360, 147)
+position = Vector2(-386, 145)
 scale = Vector2(1.5, 1.5)
 
 [node name="Platforms" type="Node2D" parent="."]
@@ -168,11 +174,3 @@ level_index = 1
 stream = ExtResource("12_ptj0r")
 volume_db = -10.0
 autoplay = true
-
-[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629500" to="Traps/@Area2D@629500" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629501" to="Traps/@Area2D@629501" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629502" to="Traps/@Area2D@629502" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629503" to="Traps/@Area2D@629503" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629504" to="Traps/@Area2D@629504" method="_on_body_entered"]
-[connection signal="body_entered" from="Traps/@Area2D@629505" to="Traps/@Area2D@629505" method="_on_body_entered"]

@@ -68,7 +68,8 @@ func _on_reveal_area_entered(area):
 			area.explode()
 	if awaken:
 		if area.is_in_group("Laser"):
-			area.parent.frequency *= 5
+			area.belongs_to.frequency *= 2
+			area.belongs_to.timer.wait_time = area.belongs_to.frequency
 			area.queue_free()
 			
 		

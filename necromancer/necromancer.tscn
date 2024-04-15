@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dax3f1xqn4kxh"]
+[gd_scene load_steps=10 format=3 uid="uid://dax3f1xqn4kxh"]
 
 [ext_resource type="Script" path="res://necromancer/necromancer.gd" id="1_erpu1"]
 [ext_resource type="SpriteFrames" uid="uid://by2jknxptjq1s" path="res://necromancer/necromancer_sprite.tres" id="2_p30ak"]
@@ -19,6 +19,13 @@ fill = 1
 fill_from = Vector2(0.490826, 0.495413)
 fill_to = Vector2(0.862385, 0.238532)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5poca"]
+random_pitch = 1.5
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("4_5gvpw")
+stream_0/weight = 1.0
+
 [node name="Necromancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spawn_l", "spawn_r") groups=["Player"]]
 collision_layer = 2
 collision_mask = 167
@@ -32,7 +39,7 @@ spawn_r = NodePath("SpawnR")
 position = Vector2(2, -20)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_p30ak")
-animation = &"idle"
+animation = &"jumping"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -60,8 +67,9 @@ stream = ExtResource("3_1e737")
 
 [node name="summon" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_5gvpw")
+stream = SubResource("AudioStreamRandomizer_5poca")
 volume_db = -20.0
+pitch_scale = 0.32
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

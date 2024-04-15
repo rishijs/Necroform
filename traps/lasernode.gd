@@ -21,7 +21,7 @@ func _ready():
 
 func fire_laser():
 	var laser = lasers.instantiate()
-	laser.parent = self
+	laser.belongs_to = self
 	add_child(laser)
 	laser.global_position = global_position
 	if not random_angle:

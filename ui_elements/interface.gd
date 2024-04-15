@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var player_ref = get_tree().get_first_node_in_group("Player")
 
+signal hint_triggered(title,description)
+
 @export_category("refs")
 @export var health1:TextureRect
 @export var health2:TextureRect
@@ -39,3 +41,12 @@ func _on_timer_timeout():
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_hint_triggered(title, description):
+	%Text.text = title
+	%Description.text = description
+	%hint.show()
+	await get_tree().create_timer(3,false).timeout
+	%hint.hide()
+	

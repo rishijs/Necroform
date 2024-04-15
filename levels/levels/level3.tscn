@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7wxwamrlrppk"]
+[gd_scene load_steps=24 format=3 uid="uid://c7wxwamrlrppk"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_xfoxb"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_k3rbe"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://66oc6516sts3" path="res://ui_elements/victory.tscn" id="7_vc4sw"]
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="7_whd11"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_xyupb"]
+[ext_resource type="PackedScene" uid="uid://blcsiabjjy72q" path="res://camera_system/hint.tscn" id="9_2ik7h"]
 [ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="15_faxco"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
@@ -108,7 +109,7 @@ physics_layer_0/collision_layer = 1
 sources/4 = SubResource("TileSetAtlasSource_ycndb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm6ij"]
-size = Vector2(653, 104)
+size = Vector2(559, 104)
 
 [node name="Level3" type="Node2D"]
 
@@ -287,17 +288,17 @@ position = Vector2(2794, -1487)
 position = Vector2(3003, -1519)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrolArea"]
-position = Vector2(195.5, 0)
+position = Vector2(250.5, 0)
 shape = SubResource("RectangleShape2D_nm6ij")
 
 [node name="def_enemy2" type="Node2D" parent="Enemies"]
-position = Vector2(1760, -1730)
+position = Vector2(1874, -1731)
 
 [node name="PL" type="Marker2D" parent="Enemies/def_enemy2"]
-position = Vector2(1120, 219)
+position = Vector2(1146, 219)
 
 [node name="PR" type="Marker2D" parent="Enemies/def_enemy2"]
-position = Vector2(1341, 228)
+position = Vector2(1304, 228)
 
 [node name="Enemy" parent="Enemies/def_enemy2" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_xyupb")]
 position = Vector2(1224, 227)
@@ -306,13 +307,13 @@ patrol_left = NodePath("../PL")
 patrol_right = NodePath("../PR")
 
 [node name="def_enemy3" type="Node2D" parent="Enemies"]
-position = Vector2(1978, -1730)
+position = Vector2(2048, -1730)
 
 [node name="PL" type="Marker2D" parent="Enemies/def_enemy3"]
-position = Vector2(1107, 219)
+position = Vector2(1150, 219)
 
 [node name="PR" type="Marker2D" parent="Enemies/def_enemy3"]
-position = Vector2(1341, 228)
+position = Vector2(1301, 228)
 
 [node name="Enemy" parent="Enemies/def_enemy3" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_xyupb")]
 position = Vector2(1224, 227)
@@ -321,19 +322,37 @@ patrol_left = NodePath("../PL")
 patrol_right = NodePath("../PR")
 
 [node name="def_enemy" type="Node2D" parent="Enemies"]
-position = Vector2(2191, -1730)
+position = Vector2(2218, -1730)
 
 [node name="PL" type="Marker2D" parent="Enemies/def_enemy"]
-position = Vector2(1107, 219)
+position = Vector2(1149, 225)
 
 [node name="PR" type="Marker2D" parent="Enemies/def_enemy"]
-position = Vector2(1341, 228)
+position = Vector2(1305, 228)
 
 [node name="Enemy" parent="Enemies/def_enemy" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_xyupb")]
 position = Vector2(1224, 227)
 patrol_range = NodePath("../../PatrolArea")
 patrol_left = NodePath("../PL")
 patrol_right = NodePath("../PR")
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="Hint" parent="Hints" instance=ExtResource("9_2ik7h")]
+position = Vector2(-254, 114)
+hint = 4
+
+[node name="Hint2" parent="Hints" instance=ExtResource("9_2ik7h")]
+position = Vector2(814, 127)
+hint = 5
+
+[node name="Hint3" parent="Hints" instance=ExtResource("9_2ik7h")]
+position = Vector2(1441, -1536)
+hint = 6
+
+[node name="Hint4" parent="Hints" instance=ExtResource("9_2ik7h")]
+position = Vector2(2656, -1611)
+hint = 7
 
 [node name="Necromancer" parent="." instance=ExtResource("3_levc6")]
 position = Vector2(-360, 147)

@@ -1,9 +1,7 @@
 extends CanvasLayer
-
-func _input(event):
-	%music.play()
 	
 func _ready():
+	Globals.player_room_number = 0
 	await get_tree().create_timer(1,false).timeout
 	%music.play()
 

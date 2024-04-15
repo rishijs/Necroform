@@ -7,6 +7,7 @@
 radius = 76.4199
 
 [node name="Necromine" type="Area2D" groups=["Mine"]]
+visible = false
 collision_mask = 135
 script = ExtResource("1_evbed")
 

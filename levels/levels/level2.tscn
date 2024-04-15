@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cu3e2mxxe60qh"]
+[gd_scene load_steps=24 format=3 uid="uid://cu3e2mxxe60qh"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_ouhi3"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_yxjbc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cv8iu7uqsfmo5" path="res://enemies/patrol_area.tscn" id="7_iuyjg"]
 [ext_resource type="PackedScene" uid="uid://c62pnn2bh7i8r" path="res://platforms/platform.tscn" id="7_r0ncs"]
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_on5y4"]
+[ext_resource type="PackedScene" uid="uid://blcsiabjjy72q" path="res://camera_system/hint.tscn" id="9_msv7g"]
 [ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="13_ibby0"]
 [ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="16_iehbx"]
 
@@ -247,8 +248,22 @@ patrol_range = NodePath("../../PatrolArea")
 patrol_left = NodePath("../PL")
 patrol_right = NodePath("../PR")
 
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="Hint" parent="Hints" instance=ExtResource("9_msv7g")]
+position = Vector2(-370, 119)
+hint = 1
+
+[node name="Hint2" parent="Hints" instance=ExtResource("9_msv7g")]
+position = Vector2(876, -441)
+hint = 2
+
+[node name="Hint3" parent="Hints" instance=ExtResource("9_msv7g")]
+position = Vector2(1671, 114)
+hint = 3
+
 [node name="Necromancer" parent="." instance=ExtResource("3_0pbus")]
-position = Vector2(-360, 147)
+position = Vector2(-236, 147)
 scale = Vector2(1.5, 1.5)
 
 [node name="Platforms" type="Node2D" parent="."]

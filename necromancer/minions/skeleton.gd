@@ -9,6 +9,7 @@ var knockback_strength = 1
 var mounted = false
 var awaken = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var mangled = preload("res://art/skeleton/skeleton_mangled.png")
 
 signal mount(loc)
 signal hit(damage,knockback)
@@ -34,7 +35,6 @@ func _on_timer_timeout():
 		call_deferred("queue_free")
 
 func upgrade():
-	speed /= 2
 	health = 5
 	dmg = 3
 	scale *= 2.5
@@ -44,6 +44,7 @@ func upgrade():
 	add_to_group("Awakened")
 	
 func _on_mount(loc):
+	sprite.play("mounted")
 	mounted = true
 	global_position = loc
 	scale *= 1.5
@@ -69,9 +70,14 @@ func apply_knockback(strength):
 	tween.tween_property(self,"global_position",global_position+change,0.1)
 
 func attack(body):
+	sprite.play("walking")
 	await get_tree().create_timer(1.0,false).timeout
 	if body != null:
+		%attack.play()
+		sprite.play("attack")
 		body.hit.emit(dmg,knockback_strength)
+	await get_tree().create_timer(1.0,false).timeout
+	sprite.play("walking")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemy"):

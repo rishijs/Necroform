@@ -1,6 +1,6 @@
 extends Area2D
 
-var parent = null
+var belongs_to = null
 var active = false
 var dmg = 1
 var knockback_strength = 1

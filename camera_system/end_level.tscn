@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cet8w02k5cq6a"]
+[gd_scene load_steps=6 format=3 uid="uid://cet8w02k5cq6a"]
 
 [ext_resource type="Script" path="res://camera_system/end_level.gd" id="1_sgaly"]
 [ext_resource type="Texture2D" uid="uid://crr4uws04dlra" path="res://art/game_elements/finish.png" id="2_d4wbo"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8217h"]
 size = Vector2(61, 43.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_70siw"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_j4pxt")
+stream_0/weight = 1.0
 
 [node name="EndLevel" type="Area2D"]
 collision_mask = 3
@@ -25,6 +31,7 @@ shape = SubResource("RectangleShape2D_8217h")
 
 [node name="level_complete" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("3_j4pxt")
+stream = SubResource("AudioStreamRandomizer_70siw")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

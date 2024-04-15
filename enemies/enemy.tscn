@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm37113yoafs"]
+[gd_scene load_steps=7 format=3 uid="uid://dm37113yoafs"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_g2l3m"]
 [ext_resource type="SpriteFrames" uid="uid://cevb2syadovkc" path="res://enemies/enemy_sprite.tres" id="2_mstxq"]
+[ext_resource type="AudioStream" uid="uid://btto2tnf7hntv" path="res://audio/sfx/attack.wav" id="3_c7dlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwkjy"]
 size = Vector2(62, 111)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di3o2"]
 size = Vector2(159, 63)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kveyo"]
+random_pitch = 1.2
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("3_c7dlp")
+stream_0/weight = 1.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "health_text") groups=["Enemy"]]
 script = ExtResource("1_g2l3m")
@@ -38,6 +46,10 @@ offset_top = -31.0
 offset_right = 8.0
 offset_bottom = -8.0
 text = "X"
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_kveyo")
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -57,6 +57,9 @@ func attack():
 		if possible_target.is_in_group("Skeleton"):
 			target = possible_target
 	
+	if target == null and patrol_mode == false:
+		sprite.play("idle")
+		
 	if target == null:
 		for possible_target in targets:
 			if possible_target.is_in_group("Player"):
@@ -65,6 +68,8 @@ func attack():
 	if target != null:
 		await get_tree().create_timer(0.25,false).timeout
 		if target != null:
+			sprite.play("attack")
+			%attack.play()
 			target.hit.emit(dmg,knockback_strength)
 			if target.health > 0:
 				await get_tree().create_timer(1,false).timeout
@@ -75,6 +80,7 @@ func switch_to_patrol_mode():
 	if patrol_mode == false and target == null:
 		await get_tree().create_timer(3,false).timeout
 		if target == null:
+			sprite.play("walking")
 			patrol_mode = true
 	
 func _on_area_2d_body_entered(body):

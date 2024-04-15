@@ -54,6 +54,7 @@ func _input(_event):
 		if can_spawn:
 			if Input.is_action_just_pressed("summon1"):
 				%summon.play()
+				sprite.play("attack")
 				if awaken and mana >= skeleton_awaken_cost:
 					spawn_minion(minions.SKELETON,1)
 					mana -= skeleton_awaken_cost
@@ -62,6 +63,7 @@ func _input(_event):
 					mana -= skeleton_awaken_cost
 			if Input.is_action_just_pressed("summon2"):
 				%summon.play()
+				sprite.play("attack")
 				if awaken and mana >= darkstar_awaken_cost:
 					spawn_minion(minions.DARKSTAR,1)
 					mana -= darkstar_awaken_cost
@@ -71,9 +73,13 @@ func _input(_event):
 		if Input.is_action_just_pressed("left"):
 			dir = dirs.LEFT
 			sprite.flip_h = false
-		if Input.is_action_just_pressed("right"):
+		elif Input.is_action_just_pressed("right"):
 			dir = dirs.RIGHT
 			sprite.flip_h = true
+		if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+			sprite.play("walking")
+		elif Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+			sprite.play("idle")
 	if Input.is_action_just_pressed("awaken"):
 		%awaken.play()
 		if awaken == true:
@@ -135,9 +141,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		sprite.play("jumping")
 		velocity.y = jump_vel
 			
 	if Input.is_action_just_released("jump"):
+		sprite.play("idle")
 		jump_cut()
 
 	var direction = Input.get_axis("left", "right")
