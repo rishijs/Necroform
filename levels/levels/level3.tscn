@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7wxwamrlrppk"]
+[gd_scene load_steps=25 format=3 uid="uid://c7wxwamrlrppk"]
 
 [ext_resource type="PackedScene" uid="uid://cc24dccmm07p7" path="res://traps/spike.tscn" id="1_xfoxb"]
 [ext_resource type="PackedScene" uid="uid://bhhv8ppl28fcy" path="res://traps/necromine.tscn" id="2_k3rbe"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dm37113yoafs" path="res://enemies/enemy.tscn" id="8_xyupb"]
 [ext_resource type="PackedScene" uid="uid://blcsiabjjy72q" path="res://camera_system/hint.tscn" id="9_2ik7h"]
 [ext_resource type="AudioStream" uid="uid://cyefmcwbao5di" path="res://audio/music/NecromancerOST.ogg" id="15_faxco"]
+[ext_resource type="PackedScene" uid="uid://b1d74130opmw6" path="res://traps/death_zone.tscn" id="17_lbulu"]
 
 [sub_resource type="Gradient" id="Gradient_iun2b"]
 offsets = PackedFloat32Array(0, 0.675325)
@@ -128,7 +129,7 @@ blend_mode = 1
 position = Vector2(-2, 2)
 tile_set = SubResource("TileSet_dreu2")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65534, 0, 196608, -65532, 0, 196608, -65530, 0, 196608, 10, 0, 65536, -1572838, 0, 196608, -1572833, 0, 196608, -1507290, 0, 327680, -1507285, 0, 262144, -1572823, 0, 262144)
+layer_0/tile_data = PackedInt32Array(-65534, 0, 196608, -65532, 0, 196608, -65530, 0, 196608, 10, 0, 65536, -1572838, 0, 196608, -1572833, 0, 196608, -1507290, 0, 327680, -1507285, 0, 262144, -1572823, 0, 262144, 7, 0, 327680)
 
 [node name="LaserManager" type="Node2D" parent="." groups=["LaserManager"]]
 
@@ -295,10 +296,10 @@ shape = SubResource("RectangleShape2D_nm6ij")
 position = Vector2(1874, -1731)
 
 [node name="PL" type="Marker2D" parent="Enemies/def_enemy2"]
-position = Vector2(1146, 219)
+position = Vector2(1122, 218)
 
 [node name="PR" type="Marker2D" parent="Enemies/def_enemy2"]
-position = Vector2(1304, 228)
+position = Vector2(1280, 227)
 
 [node name="Enemy" parent="Enemies/def_enemy2" node_paths=PackedStringArray("patrol_range", "patrol_left", "patrol_right") instance=ExtResource("8_xyupb")]
 position = Vector2(1224, 227)
@@ -325,7 +326,7 @@ patrol_right = NodePath("../PR")
 position = Vector2(2218, -1730)
 
 [node name="PL" type="Marker2D" parent="Enemies/def_enemy"]
-position = Vector2(1149, 225)
+position = Vector2(1167, 226)
 
 [node name="PR" type="Marker2D" parent="Enemies/def_enemy"]
 position = Vector2(1305, 228)
@@ -367,54 +368,11 @@ position = Vector2(260, -28)
 position = Vector2(717, 200)
 
 [node name="top" type="Marker2D" parent="Platforms/Platform_default1"]
-position = Vector2(722, -300)
+position = Vector2(706, -1487)
 
 [node name="Platform" parent="Platforms/Platform_default1" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_whd11")]
 position = Vector2(716, 179)
-bottom = NodePath("../bottom")
-top = NodePath("../top")
-
-[node name="Platform_default2" type="Node2D" parent="Platforms"]
-position = Vector2(268, -834)
-
-[node name="bottom" type="Marker2D" parent="Platforms/Platform_default2"]
-position = Vector2(717, 700)
-
-[node name="top" type="Marker2D" parent="Platforms/Platform_default2"]
-position = Vector2(717, 200)
-
-[node name="Platform" parent="Platforms/Platform_default2" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_whd11")]
-position = Vector2(716, 179)
-bottom_start = false
-bottom = NodePath("../bottom")
-top = NodePath("../top")
-
-[node name="Platform_default3" type="Node2D" parent="Platforms"]
-position = Vector2(266, -883)
-
-[node name="bottom" type="Marker2D" parent="Platforms/Platform_default3"]
-position = Vector2(717, 200)
-
-[node name="top" type="Marker2D" parent="Platforms/Platform_default3"]
-position = Vector2(717, -300)
-
-[node name="Platform" parent="Platforms/Platform_default3" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_whd11")]
-position = Vector2(716, 179)
-bottom = NodePath("../bottom")
-top = NodePath("../top")
-
-[node name="Platform_default4" type="Node2D" parent="Platforms"]
-position = Vector2(266, -1842)
-
-[node name="bottom" type="Marker2D" parent="Platforms/Platform_default4"]
-position = Vector2(717, 700)
-
-[node name="top" type="Marker2D" parent="Platforms/Platform_default4"]
-position = Vector2(717, 200)
-
-[node name="Platform" parent="Platforms/Platform_default4" node_paths=PackedStringArray("bottom", "top") instance=ExtResource("7_whd11")]
-position = Vector2(716, 179)
-bottom_start = false
+speed = 400
 bottom = NodePath("../bottom")
 top = NodePath("../top")
 
@@ -436,3 +394,17 @@ flavor = "That was a long one! Time for the quick and amazing  finale!!"
 stream = ExtResource("15_faxco")
 volume_db = -10.0
 autoplay = true
+
+[node name="DeathZone" parent="." instance=ExtResource("17_lbulu")]
+position = Vector2(2616, -1331)
+
+[connection signal="body_entered" from="Traps/Necromine" to="Traps/Necromine" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20541" to="Traps/@Area2D@20541" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20542" to="Traps/@Area2D@20542" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/Spike" to="Traps/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20543" to="Traps/@Area2D@20543" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20544" to="Traps/@Area2D@20544" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20545" to="Traps/@Area2D@20545" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20546" to="Traps/@Area2D@20546" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@20547" to="Traps/@Area2D@20547" method="_on_body_entered"]
+[connection signal="body_entered" from="Traps/@Area2D@24933" to="Traps/@Area2D@24933" method="_on_body_entered"]

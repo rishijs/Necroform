@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var bottom_start = true
-var speed = 100
+@export var speed = 100
 
 @export_category("refs")
 @export var bottom:Marker2D
